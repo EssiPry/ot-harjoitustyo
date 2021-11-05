@@ -1,11 +1,11 @@
 ## Ohjelmistotekniikka
 
-Tässä on tekstiä ja *tässä on lisää tekstiä*
+Tässä on tekstiä ja *tässä on lisää tekstiä* 
 
 ### Tehtävät 
 
 #### Viikko 1
 
-* gitlog.txt
-* komentorivi.txt
+* [gitlog.txt] (https://github.com/EssiPry/ot-harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
+* [komentorivi.txt] (https://github.com/EssiPry/ot-harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
 
