@@ -1,0 +1,105 @@
+commit 9f93cb26f19b42af81de7f9caa1e4ec433b6ef66
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Fri Nov 5 18:40:50 2021 +0200
+
+    file2 -> file22
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 627616a7d8dbc8636784e1256cdd5fb2be458450
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Fri Nov 5 18:35:38 2021 +0200
+
+    lisäys tiedostoja-kansio
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 52fd31691c7e013cc2fa6faa1a00796a50616dde
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Fri Nov 5 18:26:57 2021 +0200
+
+    muutoksia ekaan ja kolmanteen
+
+ eka.txt    | 12 +++++++-----
+ kolmas.txt |  9 ++++++++-
+ 2 files changed, 15 insertions(+), 6 deletions(-)
+
+commit 689407e3a967599379d7ac5c76f4752dff20f9d6
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 15:25:28 2021 +0200
+
+    tiedosto.txt uudelleennimetty eka.txt
+
+ tiedosto.txt => eka.txt | 0
+ toinen.txt              | 1 -
+ 2 files changed, 1 deletion(-)
+
+commit 6b6fab5f739576331058896baad9bde193896280
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 15:21:07 2021 +0200
+
+    poisto ja muutos tiedosto.txt
+
+ tiedosto.txt | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
+
+commit 24c04a3cc9cafaeb55b8309cc6c32f7a55ea2425
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 15:18:03 2021 +0200
+
+    muutos tiedosto.txt
+
+ tiedosto.txt | 44 +++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
+
+commit 14013c5d634206d0ed4025380c852ee484115e7c
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 10:58:35 2021 +0200
+
+    stuff -kansio luotu
+
+ stuff/stuff.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit b7caf1849efa8a8d682e2603da50597fcd49a5c5
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 10:40:20 2021 +0200
+
+    lisäys toinen.txt ja kolmas.txt
+
+ kolmas.txt | 1 +
+ toinen.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit ccede2836ff0d86dfbdb466f67c51027220a22e8
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 10:37:59 2021 +0200
+
+    kolmas.txt luotu
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit ce76a1073852927f43c22739974ee53039b31fe6
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 10:35:19 2021 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit cfe6430ddb47437940bfd3cab1a013bcb11c8dea
+Author: Essi Prykäri <essi.prykari@helsinki.fi>
+Date:   Wed Nov 3 10:31:37 2021 +0200
+
+    tiedosto.text luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
