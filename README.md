@@ -1,11 +1,11 @@
-##Ohjelmistotekniikka
+## Ohjelmistotekniikka
 
 Tässä on tekstiä ja *tässä on lisää tekstiä*
 
-###Tehtävät 
+### Tehtävät 
 
-####Viikko 1
+#### Viikko 1
 
-*gitlog.txt
-*komentorivi.txt
+* gitlog.txt
+* komentorivi.txt
 
