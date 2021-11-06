@@ -1,6 +1,6 @@
 ## Ohjelmistotekniikka
 
-Tässä on tekstiä ja *tässä on lisää tekstiä* 
+Tässä on tekstiä **ja** *tässä on lisää tekstiä* **ja** muutos! 
 
 ### Tehtävät 
 
