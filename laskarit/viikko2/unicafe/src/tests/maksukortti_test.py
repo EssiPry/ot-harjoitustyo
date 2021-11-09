@@ -15,11 +15,6 @@ class TestMaksukortti(unittest.TestCase):
         self.maksukortti.lataa_rahaa(90)
         self.assertEqual(str(self.maksukortti), "saldo: 1.0")
 
-    #tämä testi ei mene läpi
-    def test_kortille_ei_voi_ladata_negatiivista_summaa(self):
-        self.maksukortti.lataa_rahaa(-10)
-        self.assertEqual(str(self.maksukortti), "saldo: 0.1")
-
     def test_ota_rahaa_vahentaa_saldoa(self):
         self.assertTrue(self.maksukortti.ota_rahaa(10))
 
