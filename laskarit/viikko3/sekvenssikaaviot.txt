@@ -1,0 +1,19 @@
+Sekvenssikaavio 3
+
+main->*Machine: machine()
+Machine->*Tank:FuelTank()
+Machine->Tank:fill(40)
+Machine->*Engine:Engine(tank)
+main->Machine:drive()
+Machine->+Engine:engine.start()
+Engine->-Tank: consume(5) 
+Machine->+Engine:is_running()
+Engine->+Tank: fuel_contents
+Tank-->-Engine: 35
+Engine-->-Machine:True
+Machine->+Engine:use_energy()
+Engine->-Tank: consume(10)
+
+
+
+Sekvenssikaavio 4
