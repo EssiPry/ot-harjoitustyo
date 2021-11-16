@@ -1,0 +1,24 @@
+// Monopoli v1 
+// ------------------
+
+[Peli]1-2[Noppa]
+[Peli]1-2..8[Pelaaja]1-1[Pelinappula]
+[Peli]1-1[Pelilauta]1-40[Ruutu|seuraava ruutu] 
+[Pelinappula]0..8-1[Ruutu]
+
+
+// Monopoli v2 
+// ------------------
+
+[Peli]1-2[Noppa]
+[Peli]1-2..8[Pelaaja|Rahaa]
+[Pelaaja]1-1[Pelinappula]
+[Peli]1-1[Pelilauta]1-40[Ruutu] 
+[Pelinappula]0..8-1[Ruutu|seuraava ruutu;toiminto]
+[Peli]1-1[Aloitusruutu]
+[Peli]1-1[Vankila]
+[Ruutu]^[Vankila]
+[Ruutu]^[Aloitusruutu]
+[Ruutu]^[Asemat & laitokset]
+[Ruutu]^[Sattuma & yhteismaa]1-1[Kortti|toiminto]
+[Ruutu]^[Katu| nimi; omistaja; talo; hotelli]
