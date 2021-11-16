@@ -4,3 +4,4 @@
 | :----:|:-----| :-----|
 | 15.11. | 1   | tutustuminen projektivaatimuksiin |
 |	 | 2   | määrittelydokumentin kirjoittaminen |
+| yht. | 3h |  |
