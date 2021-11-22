@@ -15,5 +15,24 @@ Machine->+Engine:use_energy()
 Engine->-Tank: consume(10)
 
 
-
 Sekvenssikaavio 4
+
+main->*HKLLaitehallinto: HKLLaitehallinto()
+main->*rautatietori:Lataajalaite()
+main->*ratikka6:Lukijalaite()
+main->*bussi244:Lukijalaite()
+HKLLaitehallinto->rautatietori:lisaa_lataaja()
+rautatietori-->HKLLaitehallinto:rautatietori
+HKLLaitehallinto->ratikka6:lisaa_lukija()
+ratikka6-->HKLLaitehallinto:ratikka6
+HKLLaitehallinto->bussi244:lisaa_lukija()
+bussi244-->HKLLaitehallinto:bussi244
+main->*lippu_luukku:Kioski()
+lippu_luukku->*Kallen_kortti:osta_matkakortti("Kalle")
+rautatietori->Kallen_kortti:lataa_arvoa(3)
+Kallen_kortti->Kallen_kortti:kasvata_arvoa(3)
+ratikka6->Kallen_kortti:osta_lippu(0)
+Kallen_kortti->Kallen_kortti:vahenna_arvoa(1.5)
+Kallen_kortti-->ratikka6:True
+bussi244->Kallen_kortti:osta_lippu(2)
+Kallen_kortti-->bussi244:False
