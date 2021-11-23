@@ -7,6 +7,7 @@ authors = ["Essi Prykäri <essi.prykari@helsinki.fi>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 invoke = "^1.6.0"
+pygame = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
