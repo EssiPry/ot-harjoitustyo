@@ -1,20 +1,8 @@
-## Ohjelmistotekniikka
+## Tetris
 
-Tässä on tekstiä **ja** *tässä on lisää tekstiä* **ja** muutos!
+Sovellus on tetris-klooni eli hauska tietokonepeli, jossa pelaaja yrittää pudottaa eri muotoisia palikoita niin, että ne täyttävät pelialueen vaakasuunnassa ja katoavat. Peli päättyy, kun palikka koskee pelialueen kattoon.
 
 ### Dokumentaatio
 
 * [Vaatimusmäärittely](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
-* [Työaikakirjanpito](https://github.com/EssiPry/ot-harjoitustyo/blob/main/tyoaikakirjanpito.md)
-
-### Tehtävät
-
-#### Viikko 1
-
-* [gitlog.txt](https://github.com/EssiPry/ot-harjoitustyo/blob/main/laskarit/viikko1/gitlog.txt)
-* [komentorivi.txt](https://github.com/EssiPry/ot-harjoitustyo/blob/main/laskarit/viikko1/komentorivi.txt)
-
-#### Viikko 2
-
-* [Unicafe maksukortti- ja kassapäätetestit](https://github.com/EssiPry/ot-harjoitustyo/tree/main/laskarit/viikko2/unicafe/src/tests)
-* [Kattavuusraportti](https://github.com/EssiPry/ot-harjoitustyo/blob/main/laskarit/viikko2/kattavuusraportti.png)
+* [Työaikakirjanpito](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
