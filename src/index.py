@@ -48,18 +48,18 @@ def main():
     run = True
 
     while run:
+
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
                 run = False
-
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     level._block_move("left")
                 elif event.key == pygame.K_RIGHT:
                     level._block_move("right")
                 elif event.key == pygame.K_UP:
-                    print('rotate')
+                    print('placeholder for rotate')
 
         level._block_fall()
         level.all_sprites.draw(display)
