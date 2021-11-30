@@ -15,7 +15,7 @@ Sovelluksessa on vain yksi käyttäjärooli - pelaaja.
 - [ ] Pelaaja voi aloittaa pelin
 - [ ] Pelaaja voi pelata peliä
 - [x] Pelaaja voi poistua pelistä
-- [ ] Pelissä on rajattu pelialue
+- [x] Pelissä on rajattu pelialue
 - [ ] Pelissä on eri muotoisia palikoita
 - [x] Pelissä on ylhäältä alas putoava palikka
 - [x] Pelaaja voi siirtää putoavaa palikkaa oikealle ja vasemmalle
