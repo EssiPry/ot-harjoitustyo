@@ -1,6 +1,5 @@
 import pygame
 from level import Level
-from sprites.block import Block
 
 LEVEL_MAP = [[1,0,0,0,0,0,0,0,0,0,0,1],
              [1,0,0,0,0,0,0,0,0,0,0,1],
@@ -34,8 +33,6 @@ def main():
 
     display = pygame.display.set_mode((level_width, level_height))
     pygame.display.set_caption("Block-Tetris")
-
-    display.fill((0,0,0))
 
     pygame.init()
 
