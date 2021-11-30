@@ -6,6 +6,7 @@ Sovellus on tetris-klooni eli hauska tietokonepeli, jossa pelaaja yrittää pudo
 
 * [Vaatimusmäärittely](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 * [Työaikakirjanpito](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
+* [Arkkitehtuurikuvaus](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 
 ### Käyttöohje
 
@@ -19,14 +20,20 @@ Sovelluksen saa käyntiin kommennolla:
 ```bash
 poetry run invoke start
 ```
-### Testaus
+### Ohjelman testaus
 
-Tämä puuttuu tästä iteraatiosta.
+```bash
+poetry run invoke test
+```
 
 ### Testikattavuus
 
-Tämä puuttuu tästä iteraatiosta.
+```bash
+poetry run invoke coverage-report
+```
 
 ### Pylint
 
-Tämä puuttuu tästä iteraatiosta.
+```bash
+poetry run invoke lint
+```
