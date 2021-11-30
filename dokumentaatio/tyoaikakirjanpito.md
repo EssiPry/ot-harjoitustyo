@@ -8,4 +8,11 @@
 | 22.11. | 1   | projektin alustus |
 |    | 2   | pygameen tutustumista ja testailua |
 | 23.11. | 8   | pygameen tutustumista ja tuskailua |
-| yht. | 15h |  |
+| 27.11. | 1 | pygameen tutustumista |
+|    | 1 | Arkkitehtuurin suunnittelua |
+| 29.11. | 3 | pygameen tutustumista ja testailua |
+| 30.11. | 5 | koodin jako luokkiiin, koodin siistimistä ja koodausta |
+|    | 1 | Testin lisäys ja testikattavuuden testausta |
+|    | 1/2 | Pylintin lisäys & linttaus |
+|    | 1 | Arkkitehtuurikuvauksen tekeminen |
+| yht. | 27 1/2h |  |
