@@ -1,26 +1,29 @@
 import pygame
+from gameloop import Gameloop
 from level import Level
+from renderer import Renderer
 
-LEVEL_MAP = [[1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
-             [1,0,0,0,0,0,0,0,0,0,0,1],
+LEVEL_MAP = [[3,3,3,3,3,3,3,3,3,3,3,3],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
+             [2,0,0,0,0,0,0,0,0,0,0,2],
              [1,1,1,1,1,1,1,1,1,1,1,1],
              ]
 
@@ -32,42 +35,21 @@ def main():
     level_width = CELL_SIZE * len(level_map[1])
 
     display = pygame.display.set_mode((level_width, level_height))
-    pygame.display.set_caption("Block-Tetris")
+    pygame.display.set_caption("Block-tris")
 
     pygame.init()
 
     level = Level(level_map, CELL_SIZE)
-    level.all_sprites.draw(display)
-    pygame.display.update()
-
-    level._new_block()
-    level.all_sprites.draw(display)
-
     clock = pygame.time.Clock()
+    renderer = Renderer(display, level)
+    gameloop = Gameloop(clock, display, level, renderer)
 
-    run = True
+    #level._new_block()
+    #renderer.render()
 
-    while run:
+    gameloop.start()
 
-        for event in pygame.event.get():
-
-            if event.type == pygame.QUIT:
-                run = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_LEFT:
-                    level._block_move("left")
-                elif event.key == pygame.K_RIGHT:
-                    level._block_move("right")
-                elif event.key == pygame.K_UP:
-                    print('placeholder for rotate')
-
-        level._block_fall()
-        level.all_sprites.draw(display)
-        pygame.display.update()
-
-        clock.tick(30)
-
-    exit()
+    print('game over, much sad')
 
 if __name__== "__main__":
     main()
