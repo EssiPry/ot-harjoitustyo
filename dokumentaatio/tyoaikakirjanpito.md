@@ -15,4 +15,10 @@
 |    | 1 | testin lisäys ja testikattavuuden testausta |
 |    | 1/2 | pylintin lisäys & linttaus |
 |    | 1 | arkkitehtuurikuvauksen tekeminen |
-| yht. | **27 1/2h** |  |
+| 3.12. | 2 | pygamen tutustumista, testailua ja tuskailua (sprite collide) |
+| 5.12. | 1 | floor ja top luokkien lisäys, koodausta |
+| 7.12. | 2 | koodausta |
+|    | 3 | gameloopin eriyttäminen ja testailua |
+|    | 2 | testien suunnittelua & toteutusta |
+|    | 1/2 | koodin siistimistä |
+| yht. | **38h** |  |

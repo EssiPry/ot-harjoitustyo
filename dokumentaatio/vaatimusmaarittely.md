@@ -4,8 +4,6 @@
 
 Sovellus on Tetris -klooni eli eri hauska tietokonepeli, jossa pelaaja yrittää pudottaa eri muotoisia palikoita niin, että ne täyttävät pelialueen vaakasuunnassa ja katoavat. Peli päättyy, kun palikka koskee pelialueen yläosaan.
 
-#### Käyttöliittymäluonnos
-
 #### Käyttäjät
 
 Sovelluksessa on vain yksi käyttäjärooli - pelaaja.
@@ -17,14 +15,15 @@ Sovelluksessa on vain yksi käyttäjärooli - pelaaja.
 - [x] Pelaaja voi poistua pelistä
 - [x] Pelissä on rajattu pelialue
 - [ ] Pelissä on eri muotoisia palikoita
-- [x] Pelissä on ylhäältä alas putoava palikka
+- [x] Pelissä on ylhäältä alas putoava palikoita
 - [x] Pelaaja voi siirtää putoavaa palikkaa oikealle ja vasemmalle
 - [ ] Pelaaja voi kääntää putoavaa palikkaa
 - [ ] Pelaaja voi nopeuttaa palikan putoamista
-- [ ] Palikka ei mene pelialueen reunojen yli
-- [ ] Putoava palikka pysähtyy kun se törmää pelialueen pohjaan tai toiseen palikkaan
+- [x] Palikka ei mene pelialueen reunojen yli
+- [x] Putoava palikka pysähtyy kun se törmää pelialueen pohjaan tai toiseen palikkaan(vain jos putoaa toisen päälle, sivuttaissuunnassa palikat pääsevät päällekäin)
+- [x] Seuraava palikka ilmaantuu, kun edellinen on pysähtynyt
 - [ ] Kun vaakarivi täytyyy palikoista, vaakarivin palikan osat katoavat ja sen päällä olevat palikat tai niiden osat putoavat alemmas
-- [ ] Peli päättyy kun palikat yltävät pelialueen yläosaan
+- [x] Peli päättyy kun palikat yltävät pelialueen yläosaan
 
 #### Jatkokehitysideoita
 
