@@ -44,9 +44,6 @@ def main():
     renderer = Renderer(display, level)
     gameloop = Gameloop(clock, display, level, renderer)
 
-    #level._new_block()
-    #renderer.render()
-
     gameloop.start()
 
     print('game over, much sad')
