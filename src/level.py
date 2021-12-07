@@ -14,7 +14,7 @@ class Level:
         self.floors = pygame.sprite.Group()
         self.tops = pygame.sprite.Group()
         self.backgrounds = pygame.sprite.Group()
-        self.current_block = pygame.sprite.Group()
+        self.active_block = pygame.sprite.Group()
         self.locked_blocks = pygame.sprite.Group()
         self.all_sprites = pygame.sprite.Group()
 
@@ -22,14 +22,14 @@ class Level:
 
     def _new_block(self):
         self.block = Block(150,self.cell_size)
-        self.current_block.add(self.block)
-        self.all_sprites.add(self.current_block)
+        self.active_block.add(self.block)
+        self.all_sprites.add(self.active_block)
 
     def _block_fall(self):
         if self._check_collision(self.block, self.floors) == [] and self._check_collision(self.block, self.locked_blocks) == []:
             self.block.rect.move_ip(0,1)
         else:
-            self.block.remove(self.current_block)
+            self.block.remove(self.active_block)
             self.locked_blocks.add(self.block)
             self._new_block()
 
@@ -71,6 +71,6 @@ class Level:
             self.floors,
             self.walls,
             self.tops,
-            self.current_block,
+            self.active_block,
             self.locked_blocks
         )
