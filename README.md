@@ -4,9 +4,10 @@ Sovellus on tetris-klooni eli hauska tietokonepeli, jossa pelaaja yrittää pudo
 
 ### Dokumentaatio
 
+* [Arkkitehtuurikuvaus](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 * [Vaatimusmäärittely](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
 * [Työaikakirjanpito](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
-* [Arkkitehtuurikuvaus](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+
 
 ### Käyttöohje
 
@@ -26,7 +27,7 @@ poetry run invoke start
 poetry run invoke test
 ```
 
-### Testikattavuus
+### Testikattavuusraportin generointi
 
 ```bash
 poetry run invoke coverage-report
