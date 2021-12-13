@@ -1,27 +1,15 @@
 import pygame
 
-class Gameloop:
 
-    def __init__(self, clock, display, level, renderer):
-        self._clock = clock
-        self._display = display
-        self._level = level
-        self._renderer = renderer
+class Gameloop():
+
+    def __init__(self):
+        pass
 
     def start(self):
-        self._level._new_block()
-        while True:
-            if self.event_handler() == False:
-                break
+        pass
 
-            self._level._block_fall()
-            self._renderer.render()
-            self._clock.tick(45)
-
-            if self._level._check_game_over():
-                break
-
-    def get_event(self):
+    def get_events(self):
         return pygame.event.get()
 
     def event_handler(self):
@@ -34,9 +22,12 @@ class Gameloop:
                 elif event.key == pygame.K_RIGHT:
                     self._level._block_move("right")
                 elif event.key == pygame.K_UP:
-                    #placeholder for rotate block
+                    # placeholder for rotate block
                     pass
                 elif event.key == pygame.K_DOWN:
-                    #placeholder for move block down
+                    # placeholder for move block down
                     pass
         return True
+
+    def draw_level():
+        pass

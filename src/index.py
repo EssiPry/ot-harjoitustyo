@@ -1,52 +1,33 @@
 import pygame
-from gameloop import Gameloop
 from level import Level
-from renderer import Renderer
+from shape import Shape
 
-LEVEL_MAP = [[3,3,3,3,3,3,3,3,3,3,3,3],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [2,0,0,0,0,0,0,0,0,0,0,2],
-             [1,1,1,1,1,1,1,1,1,1,1,1],
-             ]
+BLOCK_SIZE = 25
 
-CELL_SIZE = 30
 
 def main():
-    level_map = LEVEL_MAP
-    level_height = CELL_SIZE * len(level_map)
-    level_width = CELL_SIZE * len(level_map[1])
-
-    display = pygame.display.set_mode((level_width, level_height))
-    pygame.display.set_caption("Block-tris")
+    display = pygame.display.set_mode((BLOCK_SIZE*22, BLOCK_SIZE*22))
+    pygame.display.set_caption("dying on the inside 2.0")
+    pygame.display.update()
 
     pygame.init()
 
-    level = Level(level_map, CELL_SIZE)
-    clock = pygame.time.Clock()
-    renderer = Renderer(display, level)
-    gameloop = Gameloop(clock, display, level, renderer)
+    level = Level()
+    shape = Shape()
+    shape.move_shape('right', level)
+    level.show_shape_in_matrix(shape)
+    level.print_matrix()
 
-    gameloop.start()
 
-    print('game over, much sad')
+    for i in range(250):
+        if level.check_game_over():
+            print('Game Over')
+            break
+        if shape.locked:
+            shape = Shape()
+        shape.shape_fall(level)
+        level.show_shape_in_matrix(shape)
+        level.print_matrix()
 
-if __name__== "__main__":
+if __name__ == "__main__":
     main()
