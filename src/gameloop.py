@@ -1,26 +1,43 @@
 import pygame
-
+from shape import Shape
 
 class Gameloop():
 
-    def __init__(self):
-        pass
+    def __init__(self,clock, display, level):
+        self._clock = clock
+        self._display = display
+        self._level = level
 
     def start(self):
-        pass
+        shape = Shape()
+        self._level.show_shape_in_matrix(shape)
+        self._level.draw_level(self._display)
 
-    def get_events(self):
+        while True:
+            if self._level.check_game_over():
+                print("Game over")
+                break
+            if self.event_handler(shape) == False:
+                break
+            if shape.locked:
+                shape = Shape()
+            shape.shape_fall(self._level)
+            self._level.show_shape_in_matrix(shape)
+            self._level.draw_level(self._display)
+            self._clock.tick(5)
+
+    def get_event(self):
         return pygame.event.get()
 
-    def event_handler(self):
+    def event_handler(self, shape):
         for event in self.get_event():
             if event.type == pygame.QUIT:
                 return False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    self._level._block_move("left")
+                    shape.move_shape('left', self._level)
                 elif event.key == pygame.K_RIGHT:
-                    self._level._block_move("right")
+                    shape.move_shape('right', self._level)
                 elif event.key == pygame.K_UP:
                     # placeholder for rotate block
                     pass
@@ -28,6 +45,3 @@ class Gameloop():
                     # placeholder for move block down
                     pass
         return True
-
-    def draw_level():
-        pass

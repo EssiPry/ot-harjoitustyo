@@ -9,7 +9,7 @@ class Shape():
         # list of coordinates: [y-coordinate, x-coordinate]
         self.coordinates = [[0, 4], [0, 5], [1, 4], [1, 5]]
         self.rotation = 0
-        self.colour = None
+        self.colour = (145, 69, 182)
         self.locked = False
 
     def get_new_shape(self):

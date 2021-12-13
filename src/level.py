@@ -1,11 +1,11 @@
 import pygame
-
+from shape import Shape
 
 class Level():
 
-    def __init__(self):
+    def __init__(self, block_size):
         self.matrix = [['.' for x in range(10)] for y in range(20)]
-        self.locked_shapes = {}
+        self.block_size = block_size
 
     def print_matrix(self):
         for row in self.matrix:
@@ -45,3 +45,18 @@ class Level():
             if self.matrix[0][i] == 'B':
                 return True
         return False
+
+    def draw_level(self, display):
+        for y in range(len(self.matrix)):
+            for x in range(len(self.matrix[0])):
+                block = self.matrix[y][x]
+                normalized_y = y * self.block_size
+                normalized_x = x * self.block_size
+                if block == '.':
+                    pygame.draw.rect(display, (0,0,0), pygame.Rect(normalized_x, normalized_y, self.block_size, self.block_size))
+                elif block == 'B':
+                    pygame.draw.rect(display, (145, 69, 182), pygame.Rect(normalized_x, normalized_y, self.block_size, self.block_size))
+                elif block == 'O':
+                    pygame.draw.rect(display, (255, 86, 119), pygame.Rect(normalized_x, normalized_y, self.block_size, self.block_size))
+
+        pygame.display.update()
