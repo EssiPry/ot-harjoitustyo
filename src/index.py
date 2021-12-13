@@ -28,6 +28,7 @@ def main():
         shape.shape_fall(level)
         level.show_shape_in_matrix(shape)
         level.print_matrix()
+        print("commit issues")
 
 if __name__ == "__main__":
     main()
