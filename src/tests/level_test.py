@@ -1,47 +1,36 @@
 import unittest
-
 from level import Level
-from sprites.block import Block
+from shape import Shape
 
-
-LEVEL_MAP = [[3,3,3,3,3,3,3],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [2,0,0,0,0,0,2],
-             [1,1,1,1,1,1,1]]
-
-CELL_SIZE = 30
 
 class TestLevel(unittest.TestCase):
     def setUp(self):
-        self.test_level = Level(LEVEL_MAP, CELL_SIZE)
-        self.test_level.block = Block(CELL_SIZE*3, CELL_SIZE)
+        self.test_level = Level(30)
+        self.test_shape = Shape()
 
-    def test_new_block_exists(self):
-        self.test_level._new_block()
-        self.assertIsNotNone(self.test_level.block)
+    def test_level_ctor(self):
+        self.assertEqual(len(self.test_level.matrix), 20)
+        self.assertEqual(self.test_level.block_size, 30)
 
-    def assert_coordinates_equal(self, sprite, x, y):
-        self.assertEqual(sprite.rect.x, x)
-        self.assertEqual(sprite.rect.y, y)
+    def test_add_shape_in_matrix(self):
+        self.test_level.add_shape_in_matrix(self.test_shape)
+        self.assertEqual(self.test_level.matrix[0][4], 'I')
+        self.assertEqual(self.test_level.matrix[1][4], 'I')
+        self.assertEqual(self.test_level.matrix[2][4], 'I')
+        self.assertEqual(self.test_level.matrix[3][4], 'I')
 
-    def test_block_move_left(self):
-        block = self.test_level.block
-        self.assert_coordinates_equal(block, CELL_SIZE*3, CELL_SIZE)
+    def test_erase_shape_from_matrix(self):
+        self.test_level.add_shape_in_matrix(self.test_shape)
+        self.assertEqual(self.test_level.matrix[0][4], 'I')
+        self.test_level.erase_shape_from_matrix(self.test_shape)
+        self.assertEqual(self.test_level.matrix[0][4], '.')
 
-        self.test_level._block_move("left")
-        self.assert_coordinates_equal(block, CELL_SIZE*2, CELL_SIZE)
+    def test_check_for_full_rows(self):
+        for i in range(10):
+            self.test_level.matrix[5][i] = 'T'
+        self.assertEqual(self.test_level.check_for_full_rows(), [5])
 
-    def test_block_move_right(self):
-        block = self.test_level.block
-        self.assert_coordinates_equal(block, CELL_SIZE*3, CELL_SIZE)
-
-        self.test_level._block_move("right")
-        self.assert_coordinates_equal(block, CELL_SIZE*4, CELL_SIZE)
+    def test_check_game_over(self):
+        self.assertFalse(self.test_level.check_game_over())
+        self.test_level.matrix[0][5] = 'i'
+        self.assertTrue(self.test_level.check_game_over())

@@ -1,76 +1,85 @@
 import pygame
-from sprites.background import Background
-from sprites.floor import Floor
-from sprites.wall import Wall
-from sprites.block import Block
-from sprites.top import Top
 
-class Level:
-    def __init__(self, level_map, cell_size):
-        self.level = level_map
-        self.cell_size = cell_size
-        self.block = None
-        self.walls = pygame.sprite.Group()
-        self.floors = pygame.sprite.Group()
-        self.tops = pygame.sprite.Group()
-        self.backgrounds = pygame.sprite.Group()
-        self.active_block = pygame.sprite.Group()
-        self.locked_blocks = pygame.sprite.Group()
-        self.all_sprites = pygame.sprite.Group()
+class Level():
+    """Luokka, joka avulla ylläpidetään palikoiden sijaintia pelikentällä.
+    """
 
-        self._initialize_sprites(level_map)
+    def __init__(self, block_size):
+        """ Luokan konstruktori, joka luo uuden pelikentän.
 
-    def _new_block(self):
-        self.block = Block(150,self.cell_size)
-        self.active_block.add(self.block)
-        self.all_sprites.add(self.active_block)
+        Args:
+            block_size (int): pelikentän yksittäisen ruudun sivun pituus
+        """
 
-    def _block_fall(self):
-        if self._check_collision(self.block, self.floors) == [] and self._check_collision(self.block, self.locked_blocks) == []:
-            self.block.rect.move_ip(0,1)
-        else:
-            self.block.remove(self.active_block)
-            self.locked_blocks.add(self.block)
-            self._new_block()
+        self.matrix = [['.' for x in range(10)] for y in range(20)]
+        self.block_size = block_size
 
-    def _block_move(self, direction):
-        if direction == "left" and self.block.rect.x > self.cell_size:
-            self.block.rect.move_ip(-self.block.rect.width, 0)
-        if direction == "right" and self.block.rect.x < self.cell_size * 11 - self.block.rect.width:
-            self.block.rect.move_ip(self.block.rect.width, 0)
+    def print_matrix(self):
+        """ Piirtää matriisin terminaalissa. Debuggaukseen, poistunee varsinaisesta versiosta.
+        """
+        for row in self.matrix:
+            print(row)
+        print()
 
-    def _check_collision(self, sprite, group):
-        return pygame.sprite.spritecollide(sprite, group, False)
+    def add_shape_in_matrix(self, shape):
+        """ Lisää palikan koordinaattien paikalle palikan nimen matriisissa.
+        """
+        for pair in shape.coordinates:
+            self.matrix[pair[0]][pair[1]] = shape.name
 
-    def _check_game_over(self):
-        if self.block.rect.y <= self.cell_size and self._check_collision(self.block, self.locked_blocks) != []:
-            return True
+    def erase_shape_from_matrix(self, shape):
+        """ Poistaa palikan nimen palikan koordinaateista matriisista.
+        """
+        for pair in shape.coordinates:
+            self.matrix[pair[0]][pair[1]] = '.'
+
+    def check_for_full_rows(self):
+        """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
+
+        Returns:
+            row_no (list): lista, jossa on täysien eli poistettavien rivien rivinumerot.
+        """
+        row_counter = 0
+        row_no = []
+        for row in self.matrix:
+            for i in range(10):
+                if row[i] == '.':
+                    break
+                if i == 9:
+                    row_no.append(row_counter)
+            row_counter += 1
+        return row_no
+
+    def delete_row(self):
+        pass
+
+    def check_game_over(self):
+        """ Tarkistaa onko peli päättynyt.
+
+        Returns:
+            True, jos ylärivillä on lukittuja palikoita, muussa tapauksessa False.
+        """
+        for i in range(9):
+            if self.matrix[0][i] in ['o', 'i']:
+                return True
         return False
 
-    def _initialize_sprites(self, level_map):
-        height = len(level_map)
-        width = len(level_map[0])
+    def draw_level(self, display):
+        """ Käy läpi matriisin ja piirtää sen mukaan pelikentän ja palikat pygameen.
+        """
+        for y in range(len(self.matrix)):
+            for x in range(len(self.matrix[0])):
+                block = self.matrix[y][x]
+                normalized_y = y * self.block_size
+                normalized_x = x * self.block_size
+                if block == '.':
+                    pygame.draw.rect(display, (0, 0, 0), pygame.Rect(
+                        normalized_x, normalized_y, self.block_size, self.block_size))
+                elif block in ['o', 'i']:
+                    pygame.draw.rect(display, (145, 69, 182), pygame.Rect(
+                        normalized_x, normalized_y, self.block_size, self.block_size))
+                elif block in ['O', 'I']:
+                    pygame.draw.rect(display, (255, 86, 119), pygame.Rect(
+                        normalized_x, normalized_y, self.block_size, self.block_size))
 
-        for y in range(height):
-            for x in range(width):
-                cell = level_map[y][x]
-                normalized_x = x * self.cell_size
-                normalized_y = y * self.cell_size
-
-                if cell == 0:
-                    self.backgrounds.add(Background(normalized_x, normalized_y))
-                elif cell == 1:
-                    self.floors.add(Floor(normalized_x, normalized_y))
-                elif cell == 2:
-                    self.walls.add(Wall(normalized_x, normalized_y))
-                elif cell == 3:
-                    self.tops.add(Top(normalized_x, normalized_y))
-
-        self.all_sprites.add(
-            self.backgrounds,
-            self.floors,
-            self.walls,
-            self.tops,
-            self.active_block,
-            self.locked_blocks
-        )
+        pygame.display.update()

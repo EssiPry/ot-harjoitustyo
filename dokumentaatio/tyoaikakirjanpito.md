@@ -9,16 +9,27 @@
 |    | 2   | pygameen tutustumista ja testailua |
 | 23.11. | 8   | pygameen tutustumista ja tuskailua |
 | 27.11. | 1 | pygameen tutustumista |
-|    | 1 | arkkitehtuurin suunnittelua |
+|    | 1 | arkkitehtuurin suunnittelua |
 | 29.11. | 3 | pygameen tutustumista ja testailua |
 | 30.11. | 5 | koodin jako luokkiiin, koodin siistimistä ja koodausta |
 |    | 1 | testin lisäys ja testikattavuuden testausta |
 |    | 1/2 | pylintin lisäys & linttaus |
 |    | 1 | arkkitehtuurikuvauksen tekeminen |
 | 3.12. | 2 | pygamen tutustumista, testailua ja tuskailua (sprite collide) |
-| 5.12. | 1 | floor ja top luokkien lisäys, koodausta |
-| 7.12. | 2 | koodausta |
+| 5.12. | 1 | floor ja top luokkien lisäys, koodausta |
+| 7.12. | 2 | koodausta |
 |    | 3 | gameloopin eriyttäminen ja testailua |
 |    | 2 | testien suunnittelua & toteutusta |
 |    | 1/2 | koodin siistimistä |
-| yht. | **38h** |  |
+| 9.12. | 1 | ohjaukseen osallistuminen & epätoivoa |
+| 11.12. | 2 | sunken cost fallacyn pohtimista, projektin aloittaminen alusta |
+| 12.12. | 2 | projektin suunnittelua |
+     | 4 | koodausta |
+| 13.12. | 8 | koodausta, testailua, ihmettelyä |
+|    | 1 | git branchin ihmettelyä & uuden version lisääminen gitiin |
+| 14.12. | 2 | koodin siistimistä |
+|    | 2 | testien suunnittelua & toteutusta |
+|    | 1 | docstring lisääminen |
+|    | 1 | arkkitehtuurikuvauksen päivittäminen |
+|    | 1/2 | käyttöohjeen kirjoittaminen |
+| yht. | **62 1/2h** |  |

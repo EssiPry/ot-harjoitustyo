@@ -10,7 +10,7 @@ Sovelluksessa on vain yksi käyttäjärooli - pelaaja.
 
 #### Perusversion toiminnallisuus
 
-- [ ] Pelaaja voi aloittaa pelin
+- [ ] Pelaaja on aloitusruutu, josta pelaaja voi aloittaa pelin
 - [ ] Pelaaja voi pelata peliä
 - [x] Pelaaja voi poistua pelistä
 - [x] Pelissä on rajattu pelialue
@@ -20,10 +20,11 @@ Sovelluksessa on vain yksi käyttäjärooli - pelaaja.
 - [ ] Pelaaja voi kääntää putoavaa palikkaa
 - [ ] Pelaaja voi nopeuttaa palikan putoamista
 - [x] Palikka ei mene pelialueen reunojen yli
-- [x] Putoava palikka pysähtyy kun se törmää pelialueen pohjaan tai toiseen palikkaan(vain jos putoaa toisen päälle, sivuttaissuunnassa palikat pääsevät päällekäin)
+- [x] Putoava palikka pysähtyy kun se törmää pelialueen pohjaan tai toiseen palikkaan(sivuttaissuunnassa palikat menevät päällekäin satunnaisesti, mutta ei aina)
 - [x] Seuraava palikka ilmaantuu, kun edellinen on pysähtynyt
 - [ ] Kun vaakarivi täytyyy palikoista, vaakarivin palikan osat katoavat ja sen päällä olevat palikat tai niiden osat putoavat alemmas
 - [x] Peli päättyy kun palikat yltävät pelialueen yläosaan
+- [ ] Pelissä on Game over -ruutu
 
 #### Jatkokehitysideoita
 

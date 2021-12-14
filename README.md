@@ -2,6 +2,9 @@
 
 Sovellus on tetris-klooni eli hauska tietokonepeli, jossa pelaaja yrittää pudottaa eri muotoisia palikoita niin, että ne täyttävät pelialueen vaakasuunnassa ja katoavat. Peli päättyy, kun palikka koskee pelialueen kattoon.
 
+
+### Release
+
 ### Dokumentaatio
 
 * [Arkkitehtuurikuvaus](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
@@ -16,7 +19,7 @@ Asenna riippuvuudet komennolla:
 poetry install
 ```
 
-Sovelluksen saa käyntiin kommennolla:
+Sovelluksen saa käyntiin komennolla:
 
 ```bash
 poetry run invoke start
@@ -32,6 +35,7 @@ poetry run invoke test
 ```bash
 poetry run invoke coverage-report
 ```
+Raportti generoituu htmlcov -kansioon.
 
 ### Pylint
 
