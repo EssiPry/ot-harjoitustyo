@@ -1,5 +1,5 @@
 import pygame
-from shape import Shape
+
 
 class Level():
 
@@ -22,13 +22,12 @@ class Level():
         for row in self.matrix:
             for i in range(10):
                 if row[i] == '.':
-                    print("not a full row")
                     break
                 elif i == 9:
                     print("yay whole row")
                     row_no.append(row_counter)
             row_counter += 1
-            print(row_no)
+        print(row_counter)
 
     def delete_row(self):
         pass
@@ -53,10 +52,13 @@ class Level():
                 normalized_y = y * self.block_size
                 normalized_x = x * self.block_size
                 if block == '.':
-                    pygame.draw.rect(display, (0,0,0), pygame.Rect(normalized_x, normalized_y, self.block_size, self.block_size))
+                    pygame.draw.rect(display, (0, 0, 0), pygame.Rect(
+                        normalized_x, normalized_y, self.block_size, self.block_size))
                 elif block == 'B':
-                    pygame.draw.rect(display, (145, 69, 182), pygame.Rect(normalized_x, normalized_y, self.block_size, self.block_size))
-                elif block == 'O':
-                    pygame.draw.rect(display, (255, 86, 119), pygame.Rect(normalized_x, normalized_y, self.block_size, self.block_size))
+                    pygame.draw.rect(display, (145, 69, 182), pygame.Rect(
+                        normalized_x, normalized_y, self.block_size, self.block_size))
+                elif block in ['O', 'I']:
+                    pygame.draw.rect(display, (255, 86, 119), pygame.Rect(
+                        normalized_x, normalized_y, self.block_size, self.block_size))
 
         pygame.display.update()

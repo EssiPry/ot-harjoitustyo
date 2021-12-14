@@ -4,6 +4,7 @@ from gameloop import Gameloop
 
 BLOCK_SIZE = 25
 
+
 def main():
     display = pygame.display.set_mode((BLOCK_SIZE*10, BLOCK_SIZE*20))
     pygame.display.set_caption("dying on the inside 2.0")
@@ -16,6 +17,7 @@ def main():
     gameloop = Gameloop(clock, display, level)
 
     gameloop.start()
+
 
 if __name__ == "__main__":
     main()

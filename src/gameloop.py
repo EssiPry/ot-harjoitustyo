@@ -1,9 +1,10 @@
 import pygame
 from shape import Shape
 
+
 class Gameloop():
 
-    def __init__(self,clock, display, level):
+    def __init__(self, clock, display, level):
         self._clock = clock
         self._display = display
         self._level = level
@@ -17,12 +18,14 @@ class Gameloop():
             if self._level.check_game_over():
                 print("Game over")
                 break
-            if self.event_handler(shape) == False:
+            if self.event_handler(shape) is False:
                 break
             if shape.locked:
                 shape = Shape()
             shape.shape_fall(self._level)
+            self._level.check_for_full_rows()
             self._level.show_shape_in_matrix(shape)
+            # self._level.print_matrix()
             self._level.draw_level(self._display)
             self._clock.tick(5)
 

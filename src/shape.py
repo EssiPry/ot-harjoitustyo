@@ -1,19 +1,21 @@
-import pygame
 import random
+
+#shapes = ['O', 'I']
+#shape_coordinates = [[[0, 4],[0, 5],[1, 4],[1, 5]], [[1,2],[2,2],[3,2],[4,2]]]
 
 
 class Shape():
 
     def __init__(self):
-        self.name = 'O'
+        self.name = 'I'
         # list of coordinates: [y-coordinate, x-coordinate]
-        self.coordinates = [[0, 4], [0, 5], [1, 4], [1, 5]]
+        self.coordinates = [[0, 4], [1, 4], [2, 4], [3, 4]]
         self.rotation = 0
         self.colour = (145, 69, 182)
         self.locked = False
 
     def get_new_shape(self):
-        return Shape()
+        return random.randint(0, 1)
 
     def shape_fall(self, level):
         self.erase_shape_from_matrix(level)
