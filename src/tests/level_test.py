@@ -27,7 +27,7 @@ class TestLevel(unittest.TestCase):
     def test_check_for_full_rows(self):
         for i in range(10):
             self.test_level.matrix[5][i] = 'T'
-        self.assertEqual(self.test_level.check_for_full_rows(),[5])
+        self.assertEqual(self.test_level.check_for_full_rows(), [5])
 
     def test_check_game_over(self):
         self.assertFalse(self.test_level.check_game_over())
