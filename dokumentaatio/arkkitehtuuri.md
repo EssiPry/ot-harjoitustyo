@@ -12,7 +12,7 @@ Tarkoitus on laajentaa käyttöliittymää niin, että pelaaja näkee pelin aika
 
 Sovelluksen loogisen tietomallin muodostavat Gameloop-, Shape- ja Level-luokat. Shape-luokka luo ja käsittelee aktiivista (laskeutuvaa) palikkaa, Level-luokka ylläpitää pelikenttää ja lukittuja palikoita. Gameloop-luokka pyörittää pelisilmukkaa ja välittää pelaajan syötteet Shape- ja Level-luokille.
 
-![Luokkakaavio](./kuvat/luokkakaavio2.png)
+![Luokkakaavio](./kuvat/luokkakaavio2.jpg)
 
 ### Päätoiminnallisuudet
 
