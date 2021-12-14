@@ -22,7 +22,7 @@ class Level():
         print()
 
     def add_shape_in_matrix(self, shape):
-        """ Lisää palikan koordinaattien paikalle palikka-olion matriisissa.
+        """ Lisää palikan koordinaattien paikalle palikan nimen matriisissa.
         """
         for pair in shape.coordinates:
             self.matrix[pair[0]][pair[1]] = shape.name
