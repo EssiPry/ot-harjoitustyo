@@ -24,7 +24,7 @@
 | 9.12. | 1 | ohjaukseen osallistuminen & epätoivoa |
 | 11.12. | 2 | sunken cost fallacyn pohtimista, projektin aloittaminen alusta |
 | 12.12. | 2 | projektin suunnittelua |
-     | 4 | koodausta |
+|    | 4 | koodausta |
 | 13.12. | 8 | koodausta, testailua, ihmettelyä |
 |    | 1 | git branchin ihmettelyä & uuden version lisääminen gitiin |
 | 14.12. | 2 | koodin siistimistä |
@@ -32,4 +32,5 @@
 |    | 1 | docstring lisääminen |
 |    | 1 | arkkitehtuurikuvauksen päivittäminen |
 |    | 1/2 | käyttöohjeen kirjoittaminen |
-| yht. | **62 1/2h** |  |
+|    | 1/2 | branch merge & release & linkitykset |
+| yht. | **63h** |  |
