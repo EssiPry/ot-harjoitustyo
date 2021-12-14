@@ -5,6 +5,8 @@ import random
 
 
 class Shape():
+    """Luokka, jonka avulla palika
+    """
 
     def __init__(self):
         self.name = 'I'
@@ -18,7 +20,7 @@ class Shape():
         return random.randint(0, 1)
 
     def shape_fall(self, level):
-        self.erase_shape_from_matrix(level)
+        level.erase_shape_from_matrix(self)
         for i in range(len(self.coordinates)):
             self.coordinates[i][0] = self.coordinates[i][0] + 1
         if not self.check_no_collisions(level):
@@ -37,7 +39,7 @@ class Shape():
         return True
 
     def move_shape(self, direction, level):
-        self.erase_shape_from_matrix(level)
+        level.erase_shape_from_matrix(self)
         if direction == "left":
             for i in range(len(self.coordinates)):
                 self.coordinates[i][1] = self.coordinates[i][1] - 1
@@ -53,10 +55,6 @@ class Shape():
         if direction == "down":
             # placeholder for moving down quicker
             pass
-
-    def erase_shape_from_matrix(self, level):
-        for pair in self.coordinates:
-            level.matrix[pair[0]][pair[1]] = '.'
 
     def lock_shape(self):
         self.name = 'B'
