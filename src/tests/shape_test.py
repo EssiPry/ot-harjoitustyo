@@ -36,4 +36,4 @@ class TestShape(unittest.TestCase):
     def test_lock_shape(self):
         self.test_shape.lock_shape()
         self.assertTrue(self.test_shape.locked)
-        self.assertEqual(self.test_shape.name, 'B')
+        self.assertEqual(self.test_shape.name, 'i')

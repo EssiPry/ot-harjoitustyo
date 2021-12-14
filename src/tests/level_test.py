@@ -32,5 +32,5 @@ class TestLevel(unittest.TestCase):
 
     def test_check_game_over(self):
         self.assertFalse(self.test_level.check_game_over())
-        self.test_level.matrix[0][5] = 'B'
+        self.test_level.matrix[0][5] = 'i'
         self.assertTrue(self.test_level.check_game_over())
