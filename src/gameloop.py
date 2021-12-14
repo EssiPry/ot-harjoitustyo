@@ -3,6 +3,10 @@ from shape import Shape
 
 
 class Gameloop():
+    """Luokka joka huolehtii pelisilmukasta, eli käyttäjän syötteiden
+    lukemisesta, peli kentän päivittämisestä syötteiden perusteella ja
+    uuden näkymän piirtämisestä.
+    """
 
     def __init__(self, clock, display, level):
         self._clock = clock
