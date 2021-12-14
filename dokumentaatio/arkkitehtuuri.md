@@ -4,7 +4,7 @@
 
 Pelissä on tällä hetkellä vain yksi näkymä - pelikenttä, jossa pelaaja voi liikuttaa palikoita. Pelikenttä sulkeutuu automaattisesti, kun peli päättyy.
 
-![Käyttöliittymä](./kuvat/kayttoliittyma.png)
+![Käyttöliittymä](./kuvat/kayttoliittyma.jpg)
 
 Tarkoitus on laajentaa käyttöliittymää niin, että pelaaja näkee pelin aikana seuraavan palikka ja omat pisteet, sekä lisätä erillinen Game over -näkymä, jossa pelaaja voi halutessaan aloittaa pelin uudestaan.
 
