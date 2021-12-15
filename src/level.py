@@ -37,16 +37,19 @@ class Level():
         """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
         Jos on niin kutsuu drop_row -metodia, joka poistaa täyden rivin ja pudottaa ylempänä olevia rivejä.
         """
+        rows_deleted = 0
         row_number = 0
         for row in self.matrix:
             for i in range(10):
                 if row[i] == '.':
                     break
                 if i == 9:
-                    self.drop_row(row_number)
+                    self.delete_and_drop_rows(row_number)
+                    rows_deleted +=1
             row_number += 1
+        return rows_deleted
 
-    def drop_row(self, row_number):
+    def delete_and_drop_rows(self, row_number):
         """ Poistaa rivin ja lisää uuden tyhjän rivin pelikentän ensimmäiseksi riviksi.
 
         Args:
