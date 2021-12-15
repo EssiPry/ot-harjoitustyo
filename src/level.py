@@ -37,21 +37,29 @@ class Level():
         """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
 
         Returns:
-            row_no (list): lista, jossa on täysien eli poistettavien rivien rivinumerot.
+            row_numbers (list): lista, jossa on täysien eli poistettavien rivien rivinumerot.
         """
         row_counter = 0
-        row_no = []
+        row_numbers = []
         for row in self.matrix:
             for i in range(10):
                 if row[i] == '.':
                     break
                 if i == 9:
-                    row_no.append(row_counter)
+                    row_numbers.append(row_counter)
             row_counter += 1
-        return row_no
+        return row_numbers
 
-    def delete_row(self):
-        pass
+    def delete_row(self, rows):
+        """ Muuttaa saamansa listssa olevat rivit takaisin tyhjäksi ruuduiksi pelikentällä.
+
+        Args:
+            rows (list): lista, jossa on poistettavien rivien rivinumerot
+        """
+        print(rows)
+        for i in range(len(rows)):
+            for j in range(10):
+                self.matrix[rows[i]][j] = '.'
 
     def check_game_over(self):
         """ Tarkistaa onko peli päättynyt.
