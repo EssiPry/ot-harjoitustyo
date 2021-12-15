@@ -27,10 +27,8 @@ class Gameloop():
             if shape.locked:
                 shape = Shape()
             shape.shape_fall(self._level)
-            if self._level.check_for_full_rows():
-                self._level.delete_row(self._level.check_for_full_rows())
+            self._level.check_for_full_rows()
             self._level.add_shape_in_matrix(shape)
-            self._level.print_matrix()
             self._level.draw_level(self._display)
             self._clock.tick(5)
 

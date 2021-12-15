@@ -35,31 +35,25 @@ class Level():
 
     def check_for_full_rows(self):
         """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
-
-        Returns:
-            row_numbers (list): lista, jossa on täysien eli poistettavien rivien rivinumerot.
+        Jos on niin kutsuu drop_row -metodia, joka poistaa täyden rivin ja pudottaa ylempänä olevia rivejä.
         """
-        row_counter = 0
-        row_numbers = []
+        row_number = 0
         for row in self.matrix:
             for i in range(10):
                 if row[i] == '.':
                     break
                 if i == 9:
-                    row_numbers.append(row_counter)
-            row_counter += 1
-        return row_numbers
+                    self.drop_row(row_number)
+            row_number += 1
 
-    def delete_row(self, rows):
-        """ Muuttaa saamansa listssa olevat rivit takaisin tyhjäksi ruuduiksi pelikentällä.
+    def drop_row(self, row_number):
+        """ Poistaa rivin ja lisää uuden tyhjän rivin pelikentän ensimmäiseksi riviksi.
 
         Args:
-            rows (list): lista, jossa on poistettavien rivien rivinumerot
+            row_number (int): poistettavan rivin rivinumero
         """
-        print(rows)
-        for i in range(len(rows)):
-            for j in range(10):
-                self.matrix[rows[i]][j] = '.'
+        self.matrix.pop(row_number)
+        self.matrix.insert(0, ['.' for x in range(10)])
 
     def check_game_over(self):
         """ Tarkistaa onko peli päättynyt.
