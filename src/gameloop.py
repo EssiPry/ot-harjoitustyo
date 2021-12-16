@@ -29,9 +29,10 @@ class Gameloop():
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)
-            self._level.print_grid()
+            #self._level.print_grid()
             self._level.draw_level(self._display)
             self._level.draw_edges_to_level(self._display)
+            self._level.show_score(self._display)
             self._clock.tick(5)
 
     def get_event(self):

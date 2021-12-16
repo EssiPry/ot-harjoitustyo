@@ -1,7 +1,6 @@
 import pygame
 from shape import Shape
 
-
 class Level():
     """Luokka, joka avulla ylläpidetään palikoiden sijaintia pelikentällä.
     """
@@ -15,6 +14,7 @@ class Level():
 
         self.grid = [['.' for x in range(10)] for y in range(20)]
         self.block_size = block_size
+        self.score = 0
 
     def print_grid(self):
         """ Piirtää matriisin terminaalissa. Debuggaukseen, poistunee varsinaisesta versiosta.
@@ -35,9 +35,6 @@ class Level():
         for pair in shape.coordinates:
             self.grid[pair[0]][pair[1]] = '.'
 
-    def get_new_shape(self):
-        return Shape()
-
     def check_for_full_rows(self):
         """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
         Jos on niin kutsuu drop_row -metodia, joka poistaa täyden rivin ja pudottaa ylempänä olevia rivejä.
@@ -52,6 +49,7 @@ class Level():
                     self.delete_and_drop_rows(row_number)
                     rows_deleted += 1
             row_number += 1
+        self.increase_score(rows_deleted)
         return rows_deleted
 
     def delete_and_drop_rows(self, row_number):
@@ -74,6 +72,17 @@ class Level():
                 return True
         return False
 
+    def increase_score(self,rows):
+        """lisää pistelaskuriin annettun rivimäärän *5 pistettä
+
+        Args:
+            rows (int): poistettujen rivin lkm
+        """
+        self.score += 5 * rows
+
+    def get_new_shape(self):
+        return Shape()
+
     def draw_level(self, display):
         """ Käy läpi matriisin ja piirtää sen mukaan pelikentän ja palikat pygameen.
         """
@@ -95,8 +104,17 @@ class Level():
         pygame.display.update()
 
     def draw_edges_to_level(self, display):
-        pygame.draw.line(display, (255,255,255), [self.block_size, self.block_size], [self.block_size, self.block_size*21], 1) #ok
-        pygame.draw.line(display, (255,255,255), [self.block_size*11, self.block_size], [self.block_size*11, self.block_size*21], 1) # ok
+        pygame.draw.line(display, (255,255,255), [self.block_size, self.block_size], [self.block_size, self.block_size*21], 1)
         pygame.draw.line(display, (255,255,255), [self.block_size, self.block_size], [self.block_size*11, self.block_size], 1)
-        pygame.draw.line(display, (255,255,255), [self.block_size, self.block_size*21], [self.block_size*11, self.block_size*21], 1) #ok
+        pygame.draw.line(display, (255,255,255), [self.block_size*11, self.block_size], [self.block_size*11, self.block_size*21], 1)
+        pygame.draw.line(display, (255,255,255), [self.block_size, self.block_size*21], [self.block_size*11, self.block_size*21], 1)
         pygame.display.update()
+
+    def show_score(self, display):
+        pygame.draw.rect(display, (255,255,255,), pygame.Rect(self.block_size*13, self.block_size, self.block_size*6, self.block_size*4) ,1)
+        pygame.display.update()
+        font = pygame.font.SysFont('arial', 25)
+        score_text = font.render('Score:', 1, (255,255,255))
+        score = font.render(f'{self.score}', 1, (255,255,255))
+        display.blit(score_text, (self.block_size*14 , self.block_size*1.5))
+        display.blit(score, (self.block_size*14 , self.block_size*2.5))
