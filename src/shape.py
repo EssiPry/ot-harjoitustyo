@@ -11,10 +11,10 @@ class Shape():
     def __init__(self):
         """ Luokan konstruktori, joka luo uuden tetris-palikan.
         """
-        self.name = 'O'
+        self.name = 'I'
         self.row = 0
         self.col = 4
-        self.coordinates = [[0, 0], [0, 1], [1, 0], [1, 1]]
+        self.coordinates = [[0, 4], [1, 4], [2, 4], [3, 4]]
         self.rotation = 0
         self.locked = False
 

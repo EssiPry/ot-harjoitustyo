@@ -1,22 +1,22 @@
 import pygame
 from shape import Shape
 
-
 class Gameloop():
     """Luokka joka huolehtii pelisilmukasta, eli käyttäjän syötteiden
     lukemisesta, peli kentän päivittämisestä syötteiden perusteella ja
     uuden näkymän piirtämisestä.
     """
 
-    def __init__(self, clock, display, level):
+    def __init__(self, clock, display, level, view):
         self._clock = clock
         self._display = display
         self._level = level
+        self._view = view
 
     def start(self):
         cur_shape = Shape()
         self._level.add_shape_to_grid(cur_shape)
-        self._level.draw_level(self._display)
+        self._view.draw_game_view()
 
         while True:
             if self._level.check_game_over():
@@ -25,14 +25,12 @@ class Gameloop():
             if self.event_handler(cur_shape) is False:
                 break
             if cur_shape.locked:
-                cur_shape = self._level.get_new_shape()
+                cur_shape = Shape()
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)
-            #self._level.print_grid()
-            self._level.draw_level(self._display)
-            self._level.draw_edges_to_level(self._display)
-            self._level.show_score(self._display)
+            self._level.print_grid()
+            self._view.draw_game_view()
             self._clock.tick(5)
 
     def get_event(self):
