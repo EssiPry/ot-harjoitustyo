@@ -4,8 +4,9 @@ from gameloop import Gameloop
 
 BLOCK_SIZE = 25
 
+
 def main():
-    display = pygame.display.set_mode((BLOCK_SIZE*10, BLOCK_SIZE*20))
+    display = pygame.display.set_mode((BLOCK_SIZE*20, BLOCK_SIZE*22))
     pygame.display.set_caption("One block-tetris")
     pygame.display.update()
 

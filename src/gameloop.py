@@ -14,22 +14,24 @@ class Gameloop():
         self._level = level
 
     def start(self):
-        shape = Shape()
-        self._level.add_shape_in_matrix(shape)
+        cur_shape = Shape()
+        self._level.add_shape_to_grid(cur_shape)
         self._level.draw_level(self._display)
 
         while True:
             if self._level.check_game_over():
                 print("Game over")
                 break
-            if self.event_handler(shape) is False:
+            if self.event_handler(cur_shape) is False:
                 break
-            if shape.locked:
-                shape = Shape()
-            shape.shape_fall(self._level)
+            if cur_shape.locked:
+                cur_shape = self._level.get_new_shape()
+            cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
-            self._level.add_shape_in_matrix(shape)
+            self._level.add_shape_to_grid(cur_shape)
+            self._level.print_grid()
             self._level.draw_level(self._display)
+            self._level.draw_edges_to_level(self._display)
             self._clock.tick(5)
 
     def get_event(self):

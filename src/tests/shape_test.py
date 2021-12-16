@@ -10,10 +10,11 @@ class TestShape(unittest.TestCase):
 
     def test_shape_ctor(self):
         self.assertEqual(self.test_shape.name, 'I')
+        self.assertEqual(self.test_shape.row, 0)
+        self.assertEqual(self.test_shape.col, 4)
         self.assertEqual(self.test_shape.coordinates, [
                          [0, 4], [1, 4], [2, 4], [3, 4]])
         self.assertEqual(self.test_shape.rotation, 0)
-        self.assertEqual(self.test_shape.colour, (145, 69, 182))
         self.assertFalse(self.test_shape.locked)
 
     def test_move_shape_left(self):
