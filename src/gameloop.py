@@ -1,3 +1,4 @@
+from random import randint
 import pygame
 from shape import Shape
 
@@ -14,7 +15,7 @@ class Gameloop():
         self._view = view
 
     def start(self):
-        cur_shape = Shape()
+        cur_shape = Shape(randint(0,2))
         self._level.add_shape_to_grid(cur_shape)
         self._view.draw_game_view()
 
@@ -24,12 +25,11 @@ class Gameloop():
                 break
             if self.event_handler(cur_shape) is False:
                 break
-            if cur_shape.locked:
-                cur_shape = Shape()
+            if cur_shape._locked:
+                cur_shape = Shape(randint(0,2))
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)
-            self._level.print_grid()
             self._view.draw_game_view()
             self._clock.tick(5)
 

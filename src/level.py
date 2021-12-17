@@ -1,3 +1,5 @@
+from shape import Shape
+
 class Level():
     """Luokka, joka avulla ylläpidetään palikoiden sijaintia pelikentällä ja
     joka laskee käynnissä olevan pelin pisteet.
@@ -10,28 +12,30 @@ class Level():
             block_size (int): pelikentän yksittäisen ruudun sivun pituus
         """
 
-        self.grid = [['.' for x in range(10)] for y in range(20)]
-        self.block_size = block_size
-        self.score = 0
+        self._grid = [['.' for x in range(10)] for y in range(20)]
+        self._block_size = block_size
+        self._score = 0
 
     def print_grid(self):
         """ Piirtää matriisin terminaalissa. Debuggaukseen, poistunee varsinaisesta versiosta.
         """
-        for row in self.grid:
+        for row in self._grid:
             print(row)
         print()
 
     def add_shape_to_grid(self, shape):
         """ Lisää palikan koordinaattien paikalle palikan nimen matriisissa.
         """
-        for pair in shape.coordinates:
-            self.grid[pair[0]][pair[1]] = shape.name
+        shape_coordinates = shape.get_current_coordinates()
+        for pair in shape_coordinates:
+            self._grid[pair[0]][pair[1]] = shape._name
 
     def erase_shape_from_grid(self, shape):
         """ Poistaa palikan nimen palikan koordinaateista matriisista.
         """
-        for pair in shape.coordinates:
-            self.grid[pair[0]][pair[1]] = '.'
+        shape_coordinates = shape.get_current_coordinates()
+        for pair in shape_coordinates:
+            self._grid[pair[0]][pair[1]] = '.'
 
     def check_for_full_rows(self):
         """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
@@ -39,7 +43,7 @@ class Level():
         """
         rows_deleted = 0
         row_number = 0
-        for row in self.grid:
+        for row in self._grid:
             for i in range(10):
                 if row[i] == '.':
                     break
@@ -56,8 +60,8 @@ class Level():
         Args:
             row_number (int): poistettavan rivin rivinumero
         """
-        self.grid.pop(row_number)
-        self.grid.insert(0, ['.' for x in range(10)])
+        self._grid.pop(row_number)
+        self._grid.insert(0, ['.' for x in range(10)])
 
     def check_game_over(self):
         """ Tarkistaa onko peli päättynyt.
@@ -66,7 +70,7 @@ class Level():
             True, jos ylärivillä on lukittuja palikoita, muussa tapauksessa False.
         """
         for i in range(9):
-            if self.grid[0][i] in ['o', 'i']:
+            if self._grid[0][i] in ['o', 'i', 't']:
                 return True
         return False
 
@@ -76,4 +80,4 @@ class Level():
         Args:
             rows (int): poistettujen rivin lkm
         """
-        self.score += 5 * rows
+        self._score += 5 * rows

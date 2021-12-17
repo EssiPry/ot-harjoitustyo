@@ -1,22 +1,50 @@
-SHAPES = ['O', 'I']
-START_COORDINATES = [[[0, 0], [0, 1], [1, 0], [1, 1]],
-                     [[0, 4], [1, 4], [2, 4], [3, 4]]]
-COLOURS = [(45, 114, 143), (201, 93, 99)]
+SHAPES = ['O', 'I', 'T']
+SHAPE_COORDINATES = [[(0, 0), (0, 1), (1, 0), (1, 1)],
+                     [(0, 0), (1, 0), (2, 0), (3, 0)],
+                     [(0, 0), (0, 1), (0, 2), (1, 1)]]
 
+class Shape:
+    def __init__(self, list_index):
+        self._name = SHAPES[list_index]
+        self._row = 0
+        self._col = 4
+        self._list_index = list_index
+        self._locked = False
 
-class Shape():
-    """Luokka, joka luo, liikuttaa ja lukitsee palikoita pelissä.
-    """
+    def get_current_coordinates(self):
+        """ Apumetodi, joka palauttaa palikan sen hetken koordinaatit
+        pelikentällä listana.
 
-    def __init__(self):
-        """ Luokan konstruktori, joka luo uuden tetris-palikan.
+        Returns:
+            [list]: palikan koordinaatit
         """
-        self.name = 'I'
-        self.row = 0
-        self.col = 4
-        self.coordinates = [[0, 4], [1, 4], [2, 4], [3, 4]]
-        self.rotation = 0
-        self.locked = False
+        current_coordinates  = []
+        for coordinates in SHAPE_COORDINATES[self._list_index]:
+            row = coordinates[0] + self._row
+            col = coordinates[1] + self._col
+            current_coordinates.append([row, col])
+        return current_coordinates
+
+    def shape_can_be_moved(self, level):
+        """ Tarkistaa voiko palikka liikkua haluttuun suuntaan pelikentällä vai
+        meneekö palikka ruudukon yli tai törmääkö se lukittuun palikkaan.
+
+        Args:
+            level (obj): pelikenttä
+
+        Returns:
+            True jos palikka voi liikkua, False jos palikka menee ruudukon yli tai törmää toiseen palikkaan.
+        """
+        current_coordinates = self.get_current_coordinates()
+        for pair in current_coordinates:
+            if pair[1] < 0 or pair[1] > 9:
+                return False
+            if pair[0] > 19:
+                return False
+            if level._grid[pair[0]][pair[1]] != '.' and level._grid[pair[0]][pair[1]] != self._name:
+                return False
+        return True
+
 
     def shape_fall(self, level):
         """ Siirtää palikkaa alas pelikentällä yhden rivin kerrallaan
@@ -26,62 +54,36 @@ class Shape():
             level (obj): pelikenttä
         """
         level.erase_shape_from_grid(self)
-        for i in range(len(self.coordinates)):
-            self.coordinates[i][0] = self.coordinates[i][0] + 1
-        if not self.check_no_collision(level):
+        self._row += 1
+        if not self.shape_can_be_moved(level):
+            self._row -= 1
             self.lock_shape()
-            for j in range(len(self.coordinates)):
-                self.coordinates[j][0] = self.coordinates[j][0] - 1
-
-    def check_no_collision(self, level):
-        """ Tarkistaa törmääkö palikka muihin palikoihin pelikentällä ja
-        ettei palikka mene pelikentän laitojen yli.
-
-        Args:
-            level (obj): pelikenttä
-
-        Returns:
-            True, jos palikka ei törmää mihinkään, False jos palikka törmää.
-        """
-        for pair in self.coordinates:
-            if pair[1] < 0 or pair[1] > 9:
-                return False
-            if pair[0] > 19:
-                return False
-            if level.grid[pair[0]][pair[1]] != '.' and level.grid[pair[0]][pair[1]] != self.name:
-                return False
-        return True
 
     def move_shape(self, direction, level):
         """ Liikuttaa palikkaa pelikentällä käyttäjäsyötteen mukaiseen suuntaan yhden sarakkeen
         tai rivin kerrallaan. Tarkistaa tuleeko uusissa koordinaateissa törmäyksiä, jos tulee
-        niin palauttaa palikan takaisin.
+        niin palauttaa palikan takaisin alkuperäisiin koordinaatteiihin.
 
         Args:
             direction (str): käyttäjäsyötteestä saatu suunta
             level (obj): pelikenttä
         """
-        if not self.locked:
+        if not self._locked:
             level.erase_shape_from_grid(self)
             if direction == "left":
-                for i in range(len(self.coordinates)):
-                    self.coordinates[i][1] = self.coordinates[i][1] - 1
-                if not self.check_no_collision(level):
-                    for i in range(len(self.coordinates)):
-                        self.coordinates[i][1] = self.coordinates[i][1] + 1
+                self._col -= 1
+                if not self.shape_can_be_moved(level):
+                    self._col += 1
             if direction == "right":
-                for i in range(len(self.coordinates)):
-                    self.coordinates[i][1] = self.coordinates[i][1] + 1
-                if not self.check_no_collision(level):
-                    for i in range(len(self.coordinates)):
-                        self.coordinates[i][1] = self.coordinates[i][1] - 1
+                self._col += 1
+                if not self.shape_can_be_moved(level):
+                    self._col -= 1
             if direction == "down":
                 # placeholder for moving down quicker
                 pass
 
-    def rotate_shape(self):
-        pass
-
     def lock_shape(self):
-        self.name = self.name.lower()
-        self.locked = True
+        """ Lukitsee palikan ja muuttaa palikan nimen pieneksi alkukirjaimeksi.
+        """
+        self._name = self._name.lower()
+        self._locked = True

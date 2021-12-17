@@ -11,19 +11,22 @@ class GameView:
 
     def draw_level_grid(self):
         pygame.Surface.fill(self.display, (0,0,0))
-        for row in range(len(self.level.grid)):
-            for col in range(len(self.level.grid[0])):
-                block = self.level.grid[row][col]
+        for row in range(len(self.level._grid)):
+            for col in range(len(self.level._grid[0])):
+                block = self.level._grid[row][col]
                 normalized_y = self.b_size + row * self.b_size
                 normalized_x = self.b_size + col * self.b_size
                 if block == '.':
                     pygame.draw.rect(self.display, (0, 0, 0), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['o', 'O']:
-                    pygame.draw.rect(self.display, (145, 69, 182), pygame.Rect(
+                    pygame.draw.rect(self.display, (45, 114, 143), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['i', 'I']:
-                    pygame.draw.rect(self.display, (255, 86, 119), pygame.Rect(
+                    pygame.draw.rect(self.display, (201, 93, 99), pygame.Rect(
+                        normalized_x, normalized_y, self.b_size, self.b_size))
+                elif block in ['t', 'T']:
+                    pygame.draw.rect(self.display, (66, 33, 61), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
         pygame.display.update()
 
@@ -44,7 +47,7 @@ class GameView:
             self.b_size*13, self.b_size, self.b_size*5, self.b_size*4), 1)
         font = pygame.font.SysFont('arial', 25)
         score_text = font.render('Score:', 1, (255, 255, 255))
-        score = font.render(f'{self.level.score}', 1, (255, 255, 255))
+        score = font.render(f'{self.level._score}', 1, (255, 255, 255))
         self.display.blit(
             score_text, (self.b_size*14, self.b_size*1.5))
         self.display.blit(score, (self.b_size*14, self.b_size*2.5))

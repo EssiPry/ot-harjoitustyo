@@ -3,6 +3,7 @@ from ui.game_view import GameView
 from ui.start_view import StartView
 from gameloop import Gameloop
 from level import Level
+from shape import Shape
 
 BLOCK_SIZE = 25
 
@@ -15,6 +16,7 @@ def main():
 
     level = Level(BLOCK_SIZE)
     clock = pygame.time.Clock()
+
     startview = StartView(display, BLOCK_SIZE)
     startview.start_screen()
     gameview = GameView(display, level, BLOCK_SIZE)
