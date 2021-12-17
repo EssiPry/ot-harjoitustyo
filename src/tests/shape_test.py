@@ -5,12 +5,13 @@ from level import Level
 SHAPES = ['O', 'I', 'T']
 SHAPE_COORDINATES = [[(0, 0), (0, 1), (1, 0), (1, 1)],
                      [(0, 0), (1, 0), (2, 0), (3, 0)],
-                     [(0, 0), (0, 1), (0, 2), (1, 1 )]]
+                     [(0, 0), (0, 1), (0, 2), (1, 1)]]
+
 
 class TestShape(unittest.TestCase):
     def setUp(self):
         self.test_shape = Shape(2)
-        self.test_level = Level(25)
+        self.test_level = Level()
 
     def test_shape_ctor(self):
         self.assertEqual(self.test_shape._name, 'T')
@@ -20,8 +21,15 @@ class TestShape(unittest.TestCase):
         self.assertFalse(self.test_shape._locked)
 
     def test_get_current_coordinates(self):
-        self.assertEqual(self.test_shape.get_current_coordinates(),[
+        self.assertEqual(self.test_shape.get_current_coordinates(), [
                          [0, 4], [0, 5], [0, 6], [1, 5]])
+
+    def test_shape_can_be_moved(self):
+        self.test_shape._col = -1
+        self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
+        self.test_shape._col = 5
+        self.test_shape._row = 20
+        self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
 
     def test_move_shape_left(self):
         self.test_shape.move_shape('left', self.test_level)

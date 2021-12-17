@@ -1,5 +1,6 @@
 import pygame
 
+
 class GameView:
     """Luokka joka piirtää pelin aikaisen näkymän.
     """
@@ -10,10 +11,11 @@ class GameView:
         self.b_size = b_size
 
     def draw_level_grid(self):
-        pygame.Surface.fill(self.display, (0,0,0))
-        for row in range(len(self.level._grid)):
-            for col in range(len(self.level._grid[0])):
-                block = self.level._grid[row][col]
+        grid = self.level.get_grid()
+        pygame.Surface.fill(self.display, (0, 0, 0))
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
+                block = grid[row][col]
                 normalized_y = self.b_size + row * self.b_size
                 normalized_x = self.b_size + col * self.b_size
                 if block == '.':
@@ -47,7 +49,7 @@ class GameView:
             self.b_size*13, self.b_size, self.b_size*5, self.b_size*4), 1)
         font = pygame.font.SysFont('arial', 25)
         score_text = font.render('Score:', 1, (255, 255, 255))
-        score = font.render(f'{self.level._score}', 1, (255, 255, 255))
+        score = font.render(f'{self.level.get_score()}', 1, (255, 255, 255))
         self.display.blit(
             score_text, (self.b_size*14, self.b_size*1.5))
         self.display.blit(score, (self.b_size*14, self.b_size*2.5))

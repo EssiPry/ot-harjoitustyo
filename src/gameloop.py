@@ -2,6 +2,7 @@ from random import randint
 import pygame
 from shape import Shape
 
+
 class Gameloop():
     """Luokka joka huolehtii pelisilmukasta, eli käyttäjän syötteiden
     lukemisesta, peli kentän päivittämisestä syötteiden perusteella ja
@@ -15,7 +16,8 @@ class Gameloop():
         self._view = view
 
     def start(self):
-        cur_shape = Shape(randint(0,2))
+        cur_shape = Shape(randint(0, 2))
+        self._level.increase_score('block', 1)
         self._level.add_shape_to_grid(cur_shape)
         self._view.draw_game_view()
 
@@ -25,8 +27,9 @@ class Gameloop():
                 break
             if self.event_handler(cur_shape) is False:
                 break
-            if cur_shape._locked:
-                cur_shape = Shape(randint(0,2))
+            if cur_shape.is_locked():
+                cur_shape = Shape(randint(0, 2))
+                self._level.increase_score('block', 1)
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)
@@ -46,8 +49,7 @@ class Gameloop():
                 elif event.key == pygame.K_RIGHT:
                     shape.move_shape('right', self._level)
                 elif event.key == pygame.K_UP:
-                    # placeholder for rotate block
-                    pass
+                    shape.rotate_shape(self._level)
                 elif event.key == pygame.K_DOWN:
                     # placeholder for move block down
                     pass

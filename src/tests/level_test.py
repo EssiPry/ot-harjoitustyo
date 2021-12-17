@@ -2,14 +2,15 @@ import unittest
 from level import Level
 from shape import Shape
 
+
 class TestLevel(unittest.TestCase):
     def setUp(self):
-        self.test_level = Level(50)
-        self.test_shape = Shape(1) # testataan I
+        self.test_level = Level()
+        self.test_shape = Shape(1)  # testataan I
 
     def test_level_ctor(self):
         self.assertEqual(len(self.test_level._grid), 20)
-        self.assertEqual(self.test_level._block_size, 50)
+        self.assertEqual(self.test_level._score, 0)
 
     def test_add_shape_to_grid(self):
         self.test_level.add_shape_to_grid(self.test_shape)
@@ -35,3 +36,7 @@ class TestLevel(unittest.TestCase):
         self.assertFalse(self.test_level.check_game_over())
         self.test_level._grid[0][5] = 'i'
         self.assertTrue(self.test_level.check_game_over())
+
+    def test_increase_score(self):
+        self.test_level.increase_score(2)
+        self.assertEqual(self.test_level._score, 10)

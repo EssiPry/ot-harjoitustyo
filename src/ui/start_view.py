@@ -1,6 +1,7 @@
 import sys
 import pygame
 
+
 class StartView:
     """Luokka joka piirtää pelin aloitusnäkymän.
     """
