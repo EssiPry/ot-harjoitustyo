@@ -1,6 +1,5 @@
 import pygame
 
-
 class GameView:
     """Luokka joka piirtää pelin aikaisen näkymän.
     """
@@ -30,6 +29,19 @@ class GameView:
                 elif block in ['t', 'T']:
                     pygame.draw.rect(self.display, (66, 33, 61), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
+                elif block in ['j', 'J']:
+                    pygame.draw.rect(self.display, (255, 166, 43), pygame.Rect(
+                        normalized_x, normalized_y, self.b_size, self.b_size))
+                elif block in ['l', 'L']:
+                    pygame.draw.rect(self.display, (136, 187, 146), pygame.Rect(
+                        normalized_x, normalized_y, self.b_size, self.b_size))
+                elif block in ['s', 'S']:
+                    pygame.draw.rect(self.display, (245, 176, 203), pygame.Rect(
+                        normalized_x, normalized_y, self.b_size, self.b_size))
+                elif block in ['z', 'Z']:
+                    pygame.draw.rect(self.display, (223, 204, 116), pygame.Rect(
+                        normalized_x, normalized_y, self.b_size, self.b_size))
+
         pygame.display.update()
 
     def draw_edges_to_level(self):
