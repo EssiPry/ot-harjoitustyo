@@ -16,7 +16,7 @@ class Gameloop():
         self._view = view
 
     def start(self):
-        cur_shape = Shape(randint(0, 2))
+        cur_shape = Shape(randint(0, 6))
         self._level.increase_score('block', 1)
         self._level.add_shape_to_grid(cur_shape)
         self._view.draw_game_view()
@@ -28,7 +28,7 @@ class Gameloop():
             if self.event_handler(cur_shape) is False:
                 break
             if cur_shape.is_locked():
-                cur_shape = Shape(randint(0, 2))
+                cur_shape = Shape(randint(0, 6))
                 self._level.increase_score('block', 1)
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()

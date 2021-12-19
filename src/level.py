@@ -23,7 +23,7 @@ class Level():
         """
         shape_coordinates = shape.get_current_coordinates()
         for pair in shape_coordinates:
-            self._grid[pair[0]][pair[1]] = shape._name
+            self._grid[pair[0]][pair[1]] = shape.get_name()
 
     def erase_shape_from_grid(self, shape):
         """ Poistaa palikan nimen palikan koordinaateista matriisista.
@@ -34,7 +34,8 @@ class Level():
 
     def check_for_full_rows(self):
         """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
-        Jos on niin kutsuu drop_row -metodia, joka poistaa täyden rivin ja pudottaa ylempänä olevia rivejä.
+        Jos on niin kutsuu drop_row -metodia, joka poistaa täyden rivin ja pudottaa
+        ylempänä olevia rivejä.
         """
         rows_deleted = 0
         row_number = 0
