@@ -66,7 +66,7 @@ class Level():
             True, jos ylärivillä on lukittuja palikoita, muussa tapauksessa False.
         """
         for i in range(9):
-            if self._grid[0][i] in ['o', 'i', 't']:
+            if self._grid[0][i] in ['o', 'i', 't', 'j', 'l', 's', 'z']:
                 return True
         return False
 

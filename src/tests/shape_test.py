@@ -2,12 +2,6 @@ import unittest
 from shape import Shape
 from level import Level
 
-SHAPES = ['O', 'I', 'T']
-SHAPE_COORDINATES = [[(0, 0), (0, 1), (1, 0), (1, 1)],
-                     [(0, 0), (1, 0), (2, 0), (3, 0)],
-                     [(0, 0), (0, 1), (0, 2), (1, 1)]]
-
-
 class TestShape(unittest.TestCase):
     def setUp(self):
         self.test_shape = Shape(2)
@@ -22,10 +16,12 @@ class TestShape(unittest.TestCase):
 
     def test_get_current_coordinates(self):
         self.assertEqual(self.test_shape.get_current_coordinates(), [
-                         [0, 4], [0, 5], [0, 6], [1, 5]])
+                         [0, 5], [1, 4], [1, 5], [1, 6]])
 
     def test_shape_can_be_moved(self):
         self.test_shape._col = -1
+        self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
+        self.test_shape._col = 10
         self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
         self.test_shape._col = 5
         self.test_shape._row = 20
@@ -43,7 +39,22 @@ class TestShape(unittest.TestCase):
         self.test_shape.shape_fall(self.test_level)
         self.assertEqual(self.test_shape._row, 1)
 
+    def test_rotate(self):
+        self.assertEqual(self.test_shape._rotation, 0)
+        self.test_shape.rotate_shape(self.test_level)
+        self.assertEqual(self.test_shape._rotation, 1)
+        self.test_shape.rotate_shape(self.test_level)
+        self.test_shape.rotate_shape(self.test_level)
+        self.test_shape.rotate_shape(self.test_level)
+        self.assertEqual(self.test_shape._rotation, 0)
+
     def test_lock_shape(self):
         self.test_shape.lock_shape()
         self.assertTrue(self.test_shape._locked)
         self.assertEqual(self.test_shape._name, 't')
+
+    def test_is_locked(self):
+        self.assertFalse(self.test_shape.is_locked())
+
+    def test_get_name(self):
+        self.assertEqual(self.test_shape.get_name(), 'T')
