@@ -1,17 +1,17 @@
-from level import Level
-
-
-shape_names = ['O', 'I', 'T']
-SHAPE_COORDINATES = [[(0, 0), (0, 1), (1, 0), (1, 1)],
-                     [(0, 0), (1, 0), (2, 0), (3, 0)],
-                     [(0, 0), (0, 1), (0, 2), (1, 1)]]
+shape_names = ['O', 'I', 'T', 'L', 'J', 'S', 'Z']
 
 shapes = {
-0 : [[(0, 0), (0, 1), (1, 0), (1, 1)]],
-1 : [[(0, 0), (1, 0), (2, 0), (3, 0)], [(3,0), (3,1), (3,2), (3,3,)]],
-2 : [[(0, 0), (0, 1), (0, 2), (1, 1)], []]
+    0: [[(0,0), (0,1), (1,0), (1,1)]],  # O
+    1: [[(0,0), (1,0), (2,0), (3,0)], [(3,0), (3,1), (3,2), (3,3,)]],  # I
+    2: [[(0,0), (0,1), (0,2), (1,1)],
+        [(0,0), (1,0), (2,0), (1,1)],
+        [(1,0), (1,1), (1,2), (0,1)],
+        [(1,0), (1,1), (2,1), (0,1)]],  # T
+    3: [[(), (), (), ()], [(), (), (), ()], [(), (), (), ()], [(), (), (), ()]],  # L
+    4: [[(), (), (), ()], [(), (), (), ()], [(), (), (), ()], [(), (), (), ()]],
+    5: [[(), (), (), ()], [(), (), (), ()], [(), (), (), ()], [(), (), (), ()]],
+    6: [[(), (), (), ()], [(), (), (), ()], [(), (), (), ()], [(), (), (), ()]]
 }
-
 
 class Shape:
     def __init__(self, list_index):
@@ -95,8 +95,6 @@ class Shape:
 
     def rotate_shape(self, level):
         level.erase_shape_from_grid(self)
-        if self._name == 'O':
-            pass
         if self._name == 'I':
             if self._rotation == 1:
                 self._rotation = 0
@@ -106,6 +104,19 @@ class Shape:
                 self._rotation += 1
                 if not self.shape_can_be_moved(level):
                     self._rotation = 0
+        elif self._name in ['T']:
+            print('rotation at start', self._rotation)
+            self._rotation += 1
+            print(self._rotation)
+            if self._rotation == 4:
+                self._rotation = 0
+            if not self.shape_can_be_moved(level):
+                if self._rotation == 0:
+                    print('back to zero')
+                    self._rotation = 3
+                else:
+                    print('bugs')
+                    self._rotation -= 1
 
     def lock_shape(self):
         """ Lukitsee palikan ja muuttaa palikan nimen pieneksi alkukirjaimeksi.

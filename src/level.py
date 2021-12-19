@@ -69,7 +69,7 @@ class Level():
                 return True
         return False
 
-    def increase_score(self, type, rows):
+    def increase_score(self, kind, number_rows):
         """lisää pistelaskuriin pisteen jokaisesta uudesta palikasta
         ja 5 pistettä jokaisesta poistetusta rivistä
 
@@ -77,10 +77,10 @@ class Level():
             type (str): palikka vai rivipisteet
             rows (int): kierroksella poistettujen rivin lkm
         """
-        if type == 'block':
+        if kind == 'block':
             self._score += 1
-        elif type == 'row':
-            self._score += 5 * rows
+        elif kind == 'row':
+            self._score += 5 * number_rows
 
     def get_grid(self):
         return self._grid
