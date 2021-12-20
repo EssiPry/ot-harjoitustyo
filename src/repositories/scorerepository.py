@@ -1,9 +1,11 @@
 from database_connection import get_database_connection
 
+
 class ScoreRepository:
     """Tietokantaan kirjoittamisesta ja tietokannasta hakemisesta
     vastaava luokka.
     """
+
     def __init__(self, connection):
         """Luokan konstruktori
 
@@ -11,6 +13,16 @@ class ScoreRepository:
             connection (obj): Tietokantayhteyden Connection -olio
         """
         self._connection = connection
+
+    def add_score_to_db(self, cur_score):
+        """ Lisää pistemäärän tietokantaan.
+
+        Args:
+            score (int): pistemäärä
+        """
+        cursor = self._connection.cursor()
+        cursor.execute("INSERT INTO Scores (score) VALUES (?)", (cur_score,))
+        self._connection.commit()
 
     def get_top_three(self):
         """ Palauttaa kolme korkeinta pistemäärää.
@@ -24,14 +36,12 @@ class ScoreRepository:
 
         return [row["score"] for row in rows]
 
-    def add_score_to_db(self, cur_score):
-        """ Lisää pistemäärän tietokantaan.
-
-        Args:
-            score (int): pistemäärä
+    def delete_all(self):
+        """ Poistaa kaikki pisteet tietokannasta.
         """
+
         cursor = self._connection.cursor()
-        cursor.execute("INSERT INTO Scores (score) VALUES (?)", (cur_score,))
+        cursor.execute("DELETE FROM Scores")
         self._connection.commit()
 
 score_repository = ScoreRepository(get_database_connection())

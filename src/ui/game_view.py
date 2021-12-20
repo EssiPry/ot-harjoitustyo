@@ -1,5 +1,6 @@
 import pygame
 
+
 class GameView:
     """Luokka joka piirtää pelin aikaisen näkymän.
     """
