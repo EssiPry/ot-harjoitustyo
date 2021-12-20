@@ -1,6 +1,9 @@
 from random import randint
 import pygame
 from shape import Shape
+from repositories.scorerepository import (
+    score_repository as default_score_repository
+)
 
 
 class Gameloop():
@@ -14,6 +17,7 @@ class Gameloop():
         self._display = display
         self._level = level
         self._view = view
+        self._score_repository = default_score_repository
 
     def start(self):
         cur_shape = Shape(randint(0, 6))
@@ -24,6 +28,8 @@ class Gameloop():
         while True:
             if self._level.check_game_over():
                 print("Game over")
+                self._score_repository.add_score_to_db(self._level.get_score())
+                print(self._score_repository.get_top_three())
                 break
             if self.event_handler(cur_shape) is False:
                 break

@@ -1,8 +1,7 @@
-from db_connection import get_db_connection
-
+from database_connection import get_database_connection
 
 def drop_tables(connection):
-    """Poistaa tietokantataulut.
+    """Poistaa tietokantataulun.
 
     Args:
         connection: Connection-olio
@@ -10,14 +9,14 @@ def drop_tables(connection):
     cursor = connection.cursor()
 
     cursor.execute('''
-        DRROP TABLE IF EXISTS Scores;
+        DROP TABLE IF EXISTS Scores;
     ''')
 
     connection.commit()
 
 
 def create_tables(connection):
-    """Luo tietokantataulut.
+    """Luo uuden tietokantataulun.
 
     Args:
         connection: Connection-olio
@@ -26,21 +25,21 @@ def create_tables(connection):
     cursor = connection.cursor()
 
     cursor.execute('''
-        CREATE TABLE Scores (id INTEGER PRIMARY KEY, user TEXT, score INT
+        CREATE TABLE Scores (id INTEGER PRIMARY KEY, score INT
         );
     ''')
 
     connection.commit()
 
 
-def initialize_db():
+def initialize_database():
     """Alustaa tietokantataulut.
     """
 
-    connection = get_db_connection()
+    connection = get_database_connection()
     drop_tables(connection)
     create_tables(connection)
 
 
 if __name__ == '__main__':
-    initialize_db()
+    initialize_database()

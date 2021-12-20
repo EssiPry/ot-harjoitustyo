@@ -6,7 +6,6 @@ from level import Level
 
 BLOCK_SIZE = 25
 
-
 def main():
     display = pygame.display.set_mode((BLOCK_SIZE*20, BLOCK_SIZE*22))
     pygame.display.set_caption("Almost tetris")
