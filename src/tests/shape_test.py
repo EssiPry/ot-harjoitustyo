@@ -2,6 +2,7 @@ import unittest
 from shape import Shape
 from level import Level
 
+
 class TestShape(unittest.TestCase):
     def setUp(self):
         self.test_shape = Shape(2)

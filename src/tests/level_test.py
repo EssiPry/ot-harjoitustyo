@@ -2,6 +2,7 @@ import unittest
 from level import Level
 from shape import Shape
 
+
 class TestLevel(unittest.TestCase):
     def setUp(self):
         self.test_level = Level()
@@ -45,7 +46,7 @@ class TestLevel(unittest.TestCase):
 
     def test_check_game_over(self):
         self.assertFalse(self.test_level.check_game_over())
-        for letter in ['o','i','t', 'j', 'l', 's', 'z']:
+        for letter in ['o', 'i', 't', 'j', 'l', 's', 'z']:
             print(letter)
             self.test_level._grid[0][5] = letter
             self.assertTrue(self.test_level.check_game_over())
