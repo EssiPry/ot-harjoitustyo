@@ -9,8 +9,13 @@
 /laskarit/viikko2/maksukortti/src/__pycache__/
 /laskarit/viikko2/__MACOSX/
 
+.coverage
 .pytest_cache
 __pycache__
 htmlcov
-.coverage
 /src/.coverage
+
+# data files
+
+data/database.sqlite
+data/test-database.sqlite
