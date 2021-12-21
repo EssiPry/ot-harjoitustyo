@@ -5,7 +5,7 @@ from level import Level
 
 class TestShape(unittest.TestCase):
     def setUp(self):
-        self.test_shape = Shape(2)
+        self.test_shape = Shape(2) # T
         self.test_level = Level()
 
     def test_shape_ctor(self):
@@ -24,13 +24,22 @@ class TestShape(unittest.TestCase):
         self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
         self.test_shape._col = 10
         self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
-        self.test_shape._col = 5
+        self.test_shape._col = 4
         self.test_shape._row = 20
+        self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
+        self.test_level._grid[18][4] = 'L'
+        self.test_shape._row = 17
         self.assertFalse(self.test_shape.shape_can_be_moved(self.test_level))
 
     def test_move_shape_left(self):
         self.test_shape.move_shape('left', self.test_level)
         self.assertEqual(self.test_shape._col, 3)
+
+
+    def test_move_shape_left_cannot_be_moved(self):
+        self.test_shape._col = 0
+        self.test_shape.move_shape('left', self.test_level)
+        self.assertEqual(self.test_shape._col, 0)
 
     def test_move_shape_right(self):
         self.test_shape.move_shape('right', self.test_level)
@@ -40,7 +49,7 @@ class TestShape(unittest.TestCase):
         self.test_shape.shape_fall(self.test_level)
         self.assertEqual(self.test_shape._row, 1)
 
-    def test_rotate(self):
+    def test_rotate_shape(self):
         self.assertEqual(self.test_shape._rotation, 0)
         self.test_shape.rotate_shape(self.test_level)
         self.assertEqual(self.test_shape._rotation, 1)
@@ -48,6 +57,16 @@ class TestShape(unittest.TestCase):
         self.test_shape.rotate_shape(self.test_level)
         self.test_shape.rotate_shape(self.test_level)
         self.assertEqual(self.test_shape._rotation, 0)
+        self.test_shape._name = 'O'
+        self.test_shape.rotate_shape(self.test_level)
+        self.assertEqual(self.test_shape._rotation, 0)
+
+    def test_rotate_shape_counter_clockwise(self):
+        self.assertEqual(self.test_shape._rotation, 0)
+        self.test_shape.rotate_shape_counter_clockwise(self.test_level)
+        self.assertEqual(self.test_shape._rotation, 3)
+        self.test_shape.rotate_shape_counter_clockwise(self.test_level)
+        self.assertEqual(self.test_shape._rotation, 2)
 
     def test_lock_shape(self):
         self.test_shape.lock_shape()

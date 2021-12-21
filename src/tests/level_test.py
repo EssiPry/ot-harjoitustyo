@@ -59,7 +59,7 @@ class TestLevel(unittest.TestCase):
     def test_increase_score(self):
         self.test_level.increase_score('row', 2)
         self.assertEqual(self.test_level._score, 10)
-        self.test_level.increase_score('block', 5)
+        self.test_level.increase_score('lock', 5)
         self.assertEqual(self.test_level._score, 11)
 
     def test_get_score(self):
