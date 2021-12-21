@@ -28,9 +28,6 @@ class EventHandler:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    return False
-            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     return False
 

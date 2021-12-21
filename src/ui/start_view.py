@@ -11,11 +11,14 @@ class StartView:
 
     def draw_start_game(self):
         self._display.fill((0,0,0))
-        font = pygame.font.SysFont('helvetica', 25)
-        press_enter = font.render('Press enter to', 1, (255, 255, 255))
-        to_start = font.render('start the game', 1, (255, 255, 255))
+        self.display_text(25, 'Press enter to', 7, 5)
+        self.display_text(25, 'start the game', 7, 6)
+        self.display_text(25, 'Press space to', 7, 9)
+        self.display_text(25, 'view high scores', 6.6, 10)
+
+    def display_text(self, font_size, text, dx, dy):
+        font = pygame.font.SysFont('helvetica', font_size)
+        to_be_displayed = font.render(text, 1, (255, 255, 255))
         self._display.blit(
-            press_enter, (self._b_size*7, self._b_size*5))
-        self._display.blit(
-            to_start, (self._b_size*7, self._b_size*6.5))
+            to_be_displayed,(self._b_size*dx, self._b_size*dy))
         pygame.display.update()
