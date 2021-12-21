@@ -34,7 +34,7 @@ class Gameloop():
                 self.start_loop()
             elif event == 'high_score':
                 self.start_high_score()
-            self._clock.tick(1)
+            self._clock.tick(1/2)
 
     def start_loop(self):
         self._level = Level()
@@ -46,12 +46,12 @@ class Gameloop():
 
         while running:
             if self._level.check_game_over():
-                self._score_repository.add_score_to_db(self._level.get_score())
+                self._score_repository.add_score_to_db('placedholder', self._level.get_score())
                 running = False
-            self._event_handler.game_event_handler(cur_shape, self._level)
             if cur_shape.is_locked():
                 cur_shape = Shape(randint(0, 6))
                 self._level.increase_score('lock', 1)
+            self._event_handler.game_event_handler(cur_shape, self._level)
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)

@@ -123,9 +123,6 @@ class Shape:
                 self._col += 1
                 if not self.shape_can_be_moved(level):
                     self._col -= 1
-            if direction == "down":
-                # placeholder for moving down quicker
-                pass
 
     def rotate_shape(self, level):
         """ Kääntää palikkaa 90 astetta pelikentällä. Jos palikka ei mahdu

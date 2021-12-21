@@ -26,7 +26,7 @@ def create_tables(connection):
     cursor = connection.cursor()
 
     cursor.execute('''
-        CREATE TABLE Scores (id INTEGER PRIMARY KEY, score INT
+        CREATE TABLE Scores (id INTEGER PRIMARY KEY, player TEXT, score INT
         );
     ''')
 

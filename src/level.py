@@ -5,14 +5,15 @@ class Level():
 
     def __init__(self):
         """ Luokan konstruktori, joka luo uuden tyhjän pelikentän ja
-        asettaa pistelaskurin nollaan.
+        asettaa pistelaskurin ja poistettujen rivien määrän nollaan.
         """
 
         self._grid = [['.' for x in range(10)] for y in range(20)]
         self._score = 0
+        self._lines_removed = 0
 
     def print_grid(self):
-        """ Piirtää matriisin terminaalissa. Debuggaukseen, poistunee varsinaisesta versiosta.
+        """ Piirtää matriisin terminaalissa. Debuggaukseen.
         """
         for row in self._grid:
             print(row)
@@ -58,6 +59,7 @@ class Level():
         """
         self._grid.pop(row_number)
         self._grid.insert(0, ['.' for x in range(10)])
+        self._lines_removed += 1
 
     def check_game_over(self):
         """ Tarkistaa onko peli päättynyt.
@@ -88,3 +90,6 @@ class Level():
 
     def get_score(self):
         return self._score
+
+    def get_lines_removed(self):
+        return self._lines_removed
