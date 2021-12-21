@@ -145,6 +145,25 @@ class Shape:
                 else:
                     self._rotation -= 1
 
+
+    def rotate_shape_counter_clockwise(self, level):
+        """ Kääntää palikkaa 90 astetta pelikentällä. Jos palikka ei mahdu
+        kääntymään palauttaa palikan takaisin alkuperäiseen asentoon.
+
+        Args:
+            level (obj): pelikenttä
+        """
+        level.erase_shape_from_grid(self)
+        if self._name in ['I', 'i', 'T', 't', 'L', 'l', 'J', 'j', 'S', 's', 'Z', 'z']:
+            self._rotation -= 1
+            if self._rotation == -1:
+                self._rotation = 3
+            if not self.shape_can_be_moved(level):
+                if self._rotation == 3:
+                    self._rotation = 0
+                else:
+                    self._rotation += 1
+
     def lock_shape(self):
         """ Lukitsee palikan ja muuttaa palikan nimen pieneksi alkukirjaimeksi.
         """

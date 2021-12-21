@@ -45,8 +45,7 @@ class EventHandler:
                 elif event.key == pygame.K_UP:
                     shape.rotate_shape(level)
                 elif event.key == pygame.K_DOWN:
-                    # placeholder for rotate shape counter clockwise
-                    pass
+                    shape.rotate_shape_counter_clockwise(level)
         return True
 
     def get_event(self):
