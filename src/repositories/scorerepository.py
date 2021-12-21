@@ -14,27 +14,27 @@ class ScoreRepository:
         """
         self._connection = connection
 
-    def add_score_to_db(self, cur_score):
+    def add_score_to_db(self, player, cur_score):
         """ Lisää pistemäärän tietokantaan.
 
         Args:
             score (int): pistemäärä
         """
         cursor = self._connection.cursor()
-        cursor.execute("INSERT INTO Scores (score) VALUES (?)", (cur_score,))
+        cursor.execute("INSERT INTO Scores (player, score) VALUES (?, ?)", (player, cur_score))
         self._connection.commit()
 
-    def get_top_three(self):
-        """ Palauttaa kolme korkeinta pistemäärää.
+    def get_top_five(self):
+        """ Palauttaa viisi korkeinta pistemäärää.
 
         Returns:
             [lista]: [description]
         """
         cursor = self._connection.cursor()
-        cursor.execute("SELECT score FROM Scores ORDER BY score DESC LIMIT 3")
+        cursor.execute("SELECT player, score FROM Scores ORDER BY score DESC LIMIT 5")
         rows = cursor.fetchall()
 
-        return [row["score"] for row in rows]
+        return [(row["player"], row["score"]) for row in rows]
 
     def delete_all(self):
         """ Poistaa kaikki pisteet tietokannasta.

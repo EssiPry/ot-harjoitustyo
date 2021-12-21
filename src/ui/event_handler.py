@@ -10,6 +10,11 @@ class EventHandler:
         pass
 
     def main_menu_event_handler(self):
+        """Aloitusvalikon käyttäjäsyötteen käsittelijä
+
+        Returns:
+            [str]: seuraavan näkymän nimen
+        """
         for event in self.get_event():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -24,6 +29,13 @@ class EventHandler:
                     sys.exit()
 
     def high_score_and_game_over_handler(self):
+        """ Tulosnäkymän ja Game Over -näkymän
+        käyttäjänsyötteen käsittelijä.
+
+        Returns:
+            [Bool]: palauttaa Falsen, joka lopettaa silmukan ja palauttaa
+            pelin takaisin aloitusnäkymään
+        """
         for event in self.get_event():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -33,6 +45,13 @@ class EventHandler:
                     return False
 
     def game_event_handler(self, shape, level):
+        """ Pelin aikaisen käyttäjäsyötteen käsittelijä.
+
+        Args:
+            shape (obj): putoava palikka
+            level (obj): pelikenttä
+
+        """
         for event in self.get_event():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -46,7 +65,6 @@ class EventHandler:
                     shape.rotate_shape(level)
                 elif event.key == pygame.K_DOWN:
                     shape.rotate_shape_counter_clockwise(level)
-        return True
 
     def get_event(self):
         return pygame.event.get()
