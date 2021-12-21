@@ -1,0 +1,31 @@
+import pygame
+from repositories.scorerepository import (
+    score_repository as default_score_repository
+)
+
+
+class HighScoreView:
+    """Luokka, joka piirtää parhaat pisteet näkymän.
+    """
+
+    def __init__(self, display, block_size):
+        self._display = display
+        self._b_size = block_size
+        self._score_repository = default_score_repository
+
+    def fill_background(self):
+        self._display.fill((0,0,0))
+
+    def show_top_three(self):
+        results = self._score_repository.get_top_three()
+        font = pygame.font.SysFont('helvetica', 25)
+        x = 5
+        for i in range(3):
+            result = font.render(f'{i+1}. {results[i]}', 1, (255, 255, 255))
+            self._display.blit(result, (self._b_size*4.7, self._b_size*x))
+            x += 1.5
+        pygame.display.update()
+
+    def draw_high_score_view(self):
+        self.fill_background()
+        self.show_top_three()

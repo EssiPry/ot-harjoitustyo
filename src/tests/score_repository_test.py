@@ -1,6 +1,7 @@
 import unittest
 from repositories.scorerepository import score_repository
 
+
 class TestScoreRepository(unittest.TestCase):
     def setUp(self):
         score_repository.delete_all()
@@ -15,7 +16,6 @@ class TestScoreRepository(unittest.TestCase):
 
         self.assertEqual(len(scores), 1)
         self.assertEqual(scores[0], 10)
-
 
     def test_get_top_three(self):
         score_repository.add_score_to_db(self.score_1)

@@ -5,10 +5,10 @@ class GameView:
     """Luokka joka piirtää pelin aikaisen näkymän.
     """
 
-    def __init__(self, display, level, b_size):
+    def __init__(self, display, level, block_size):
         self.display = display
         self.level = level
-        self.b_size = b_size
+        self.b_size = block_size
 
     def draw_level_grid(self):
         grid = self.level.get_grid()
@@ -22,25 +22,25 @@ class GameView:
                     pygame.draw.rect(self.display, (0, 0, 0), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['o', 'O']:
-                    pygame.draw.rect(self.display, (45, 114, 143), pygame.Rect(
+                    pygame.draw.rect(self.display, (0, 0, 255), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['i', 'I']:
-                    pygame.draw.rect(self.display, (201, 93, 99), pygame.Rect(
+                    pygame.draw.rect(self.display, (255, 0, 0), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['t', 'T']:
-                    pygame.draw.rect(self.display, (66, 33, 61), pygame.Rect(
+                    pygame.draw.rect(self.display, (153, 76, 0), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['j', 'J']:
-                    pygame.draw.rect(self.display, (255, 166, 43), pygame.Rect(
+                    pygame.draw.rect(self.display, (255, 128, 0), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['l', 'L']:
-                    pygame.draw.rect(self.display, (136, 187, 146), pygame.Rect(
+                    pygame.draw.rect(self.display, (255, 0, 255), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['s', 'S']:
-                    pygame.draw.rect(self.display, (245, 176, 203), pygame.Rect(
+                    pygame.draw.rect(self.display, (0, 255, 0), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
                 elif block in ['z', 'Z']:
-                    pygame.draw.rect(self.display, (223, 204, 116), pygame.Rect(
+                    pygame.draw.rect(self.display, (0, 255, 255), pygame.Rect(
                         normalized_x, normalized_y, self.b_size, self.b_size))
 
         pygame.display.update()
@@ -60,7 +60,7 @@ class GameView:
         self.empty_score_card()
         pygame.draw.rect(self.display, (255, 255, 255,), pygame.Rect(
             self.b_size*13, self.b_size, self.b_size*5, self.b_size*4), 1)
-        font = pygame.font.SysFont('arial', 25)
+        font = pygame.font.SysFont('helvetica', 25)
         score_text = font.render('Score:', 1, (255, 255, 255))
         score = font.render(f'{self.level.get_score()}', 1, (255, 255, 255))
         self.display.blit(

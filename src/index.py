@@ -1,27 +1,21 @@
 import pygame
-from ui.game_view import GameView
-from ui.start_view import StartView
 from gameloop import Gameloop
-from level import Level
+from ui.event_handler import EventHandler
 
 BLOCK_SIZE = 25
 
 
 def main():
     display = pygame.display.set_mode((BLOCK_SIZE*20, BLOCK_SIZE*22))
-    pygame.display.set_caption("Almost tetris")
+    pygame.display.set_caption("Tetris-ish")
     pygame.display.update()
 
     pygame.init()
 
-    level = Level()
     clock = pygame.time.Clock()
-
-    startview = StartView(display, BLOCK_SIZE)
-    startview.start_screen()
-    gameview = GameView(display, level, BLOCK_SIZE)
-    gameloop = Gameloop(clock, display, level, gameview)
-    gameloop.start()
+    event_handler = EventHandler()
+    gameloop = Gameloop(clock, display, BLOCK_SIZE, event_handler)
+    gameloop.start_main_menu()
 
 
 if __name__ == "__main__":

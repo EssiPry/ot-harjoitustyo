@@ -44,4 +44,5 @@ class ScoreRepository:
         cursor.execute("DELETE FROM Scores")
         self._connection.commit()
 
+
 score_repository = ScoreRepository(get_database_connection())
