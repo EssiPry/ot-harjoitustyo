@@ -9,6 +9,7 @@ from ui.game_view import GameView
 from ui.high_score_view import HighScoreView
 from ui.start_view import StartView
 
+
 class Gameloop():
     """Luokka joka huolehtii pelisilmukasta, eli käyttäjän syötteiden
     lukemisesta, peli kentän päivittämisestä syötteiden perusteella ja
@@ -40,7 +41,6 @@ class Gameloop():
         self._view = GameView(self._display, self._level, self._block_size)
         running = True
         cur_shape = Shape(randint(0, 6))
-        self._level.increase_score('block', 1)
         self._level.add_shape_to_grid(cur_shape)
         self._view.draw_game_view()
 
@@ -51,7 +51,7 @@ class Gameloop():
             self._event_handler.game_event_handler(cur_shape, self._level)
             if cur_shape.is_locked():
                 cur_shape = Shape(randint(0, 6))
-                self._level.increase_score('block', 1)
+                self._level.increase_score('lock', 1)
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)

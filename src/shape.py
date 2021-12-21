@@ -36,7 +36,18 @@ shapes = {
 
 
 class Shape:
+    """ Luokka, joka kääntää, siirtää ja pudottaa palikkaa pelikentällä
+    sekä lukitsee palikan jos palikka törmää toiseen palikkaan tai pelikentän
+    reunaan.
+    """
+
     def __init__(self, list_index):
+        """ Luokan konstruktori, luo uuden palikan, asettaa palikan
+        pelikentän keskellä koordinaatteihin [0][4]
+
+        Args:
+            list_index (int): indeksi, jolla valitaan satunnainen palikka listalta.
+        """
         self._name = shape_names[list_index]
         self._row = 0
         self._col = 4

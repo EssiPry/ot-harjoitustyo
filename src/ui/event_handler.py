@@ -1,6 +1,7 @@
 import sys
 import pygame
 
+
 class EventHandler:
     """ Luokka, joka käsittelee käyttäjältä tulevan syötteen.
     """

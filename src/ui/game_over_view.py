@@ -4,6 +4,7 @@ import pygame
 class GameOverView:
     """Luokka, joka piirtää pelin lopetusnäkymän.
     """
+
     def __init__(self, display, block_size):
         self._display = display
         self._b_size = block_size

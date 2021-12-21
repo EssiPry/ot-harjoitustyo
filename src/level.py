@@ -71,14 +71,14 @@ class Level():
         return False
 
     def increase_score(self, kind, number_rows):
-        """lisää pistelaskuriin pisteen jokaisesta uudesta palikasta
+        """lisää pistelaskuriin pisteen jokaisesta lukitusta palikasta
         ja 5 pistettä jokaisesta poistetusta rivistä
 
         Args:
-            type (str): palikka vai rivipisteet
+            type (str): lukitseminen vai rivipisteet
             rows (int): kierroksella poistettujen rivin lkm
         """
-        if kind == 'block':
+        if kind == 'lock':
             self._score += 1
         elif kind == 'row':
             self._score += 5 * number_rows
