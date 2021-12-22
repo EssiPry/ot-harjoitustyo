@@ -4,44 +4,35 @@ from level import Level
 from repositories.scorerepository import (
     score_repository as default_score_repository
 )
-from ui.game_over_view import GameOverView
-from ui.game_view import GameView
-from ui.high_score_view import HighScoreView
-from ui.start_view import StartView
-
 
 class Gameloop():
     """Luokka joka ylläpitää pelisilmukkaa, yhdistää sovelluslogiikan
     ja käyttäjäsyötteet, sekä hallinnoi pelikentän piirtämistä.
     """
 
-    def __init__(self, clock, display, block_size, event_handler):
+    def __init__(self, clock, renderer, event_handler):
         self._clock = clock
-        self._display = display
         self._level = None
-        self._block_size = block_size
-        self._view_renderer = None
+        self._renderer = renderer
         self._event_handler = event_handler
         self._score_repository = default_score_repository
 
     def start_main_menu(self):
         while True:
-            self._view_renderer = StartView(self._display, self._block_size)
-            self._view_renderer.draw_start_game()
+            self._renderer.render_start()
             event = self._event_handler.main_menu_event_handler()
             if event == 'start':
-                self.start_loop()
+                self.start_game_loop()
             elif event == 'high_score':
                 self.start_high_score()
             self._clock.tick(1)
 
-    def start_loop(self):
+    def start_game_loop(self):
         self._level = Level()
-        self._view_renderer = GameView(self._display, self._level, self._block_size)
         running = True
         cur_shape = Shape(randint(0, 6))
         self._level.add_shape_to_grid(cur_shape)
-        self._view_renderer.draw_game_view()
+        self._renderer.render_game(self._level)
 
         while running:
             if self._level.check_game_over():
@@ -54,24 +45,22 @@ class Gameloop():
             cur_shape.shape_fall(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)
-            self._view_renderer.draw_game_view()
-            self._clock.tick(1)
+            self._renderer.render_game(self._level)
+            self._clock.tick(3)
         self.start_game_over()
 
     def start_high_score(self):
-        self._view_renderer = HighScoreView(self._display, self._block_size)
         running = True
         while running:
-            self._view_renderer.draw_high_score_view()
+            self._renderer.render_high_score()
             if self._event_handler.high_score_and_game_over_handler() is False:
                 break
             self._clock.tick(1)
 
     def start_game_over(self):
-        self._view_renderer = GameOverView(self._display, self._block_size)
         running = True
         while running:
-            self._view_renderer.show_game_over()
+            self._renderer.render_game_over()
             if self._event_handler.high_score_and_game_over_handler() is False:
                 break
             self._clock.tick(1)
