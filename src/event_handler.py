@@ -1,13 +1,15 @@
 import sys
 import pygame
 
+from event_queue import EventQueue
+
 
 class EventHandler:
     """ Luokka, joka käsittelee käyttäjältä tulevan syötteen.
     """
 
     def __init__(self):
-        pass
+        self._event_queue = EventQueue()
 
     def main_menu_event_handler(self):
         """Aloitusvalikon käyttäjäsyötteen käsittelijä
@@ -15,7 +17,7 @@ class EventHandler:
         Returns:
             [str]: seuraavan näkymän nimen
         """
-        for event in self.get_event():
+        for event in self._event_queue.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -36,7 +38,7 @@ class EventHandler:
             [Bool]: palauttaa Falsen, joka lopettaa silmukan ja palauttaa
             pelin takaisin aloitusnäkymään
         """
-        for event in self.get_event():
+        for event in self._event_queue.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -52,7 +54,7 @@ class EventHandler:
             level (obj): pelikenttä
 
         """
-        for event in self.get_event():
+        for event in self._event_queue.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -65,6 +67,3 @@ class EventHandler:
                     shape.rotate_shape(level)
                 elif event.key == pygame.K_DOWN:
                     shape.rotate_shape_counter_clockwise(level)
-
-    def get_event(self):
-        return pygame.event.get()
