@@ -11,9 +11,8 @@ from ui.start_view import StartView
 
 
 class Gameloop():
-    """Luokka joka huolehtii pelisilmukasta, eli käyttäjän syötteiden
-    lukemisesta, peli kentän päivittämisestä syötteiden perusteella ja
-    uuden näkymän piirtämisestä.
+    """Luokka joka ylläpitää pelisilmukkaa, yhdistää sovelluslogiikan
+    ja käyttäjäsyötteet, sekä hallinnoi pelikentän piirtämistä.
     """
 
     def __init__(self, clock, display, block_size, event_handler):
