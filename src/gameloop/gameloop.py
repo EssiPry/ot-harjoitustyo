@@ -1,8 +1,8 @@
 import sys
 from random import randint
 import pygame
-from shape import Shape
-from level import Level
+from game_logic.shape import Shape
+from game_logic.level import Level
 from repositories.scorerepository import (
     score_repository as default_score_repository
 )
@@ -85,7 +85,7 @@ class Gameloop():
                         pygame.quit()
                         sys.exit()
 
-            if view in ['HighScoreView','GameOverView']:
+            if view in ['HighScoreView', 'GameOverView']:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         return False

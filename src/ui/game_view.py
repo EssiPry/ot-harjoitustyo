@@ -59,18 +59,23 @@ class GameView:
     def show_score_card(self):
         self.empty_score_card()
         pygame.draw.rect(self.display, (255, 255, 255,), pygame.Rect(
-            self.b_size*13, self.b_size, self.b_size*5, self.b_size*4), 1)
-        font = pygame.font.SysFont('helvetica', 25)
+            self.b_size*13, self.b_size, self.b_size*6, self.b_size*5.5), 1)
+        font = pygame.font.SysFont('helvetica', 20)
         score_text = font.render('Score:', 1, (255, 255, 255))
         score = font.render(f'{self.level.get_score()}', 1, (255, 255, 255))
         self.display.blit(
-            score_text, (self.b_size*14, self.b_size*1.5))
-        self.display.blit(score, (self.b_size*14, self.b_size*2.5))
+            score_text, (self.b_size*13.5, self.b_size*1.5))
+        self.display.blit(score, (self.b_size*13.5, self.b_size*2.5))
+        lines_text = font.render('Lines cleared:', 1, (255, 255, 255))
+        lines = font.render(f'{self.level.get_lines_cleared()}', 1, (255, 255, 255))
+        self.display.blit(
+            lines_text, (self.b_size*13.5, self.b_size*4))
+        self.display.blit(lines, (self.b_size*13.5, self.b_size*5))
         pygame.display.update()
 
     def empty_score_card(self):
         pygame.draw.rect(self.display, (0, 0, 0,), pygame.Rect(
-            self.b_size*13, self.b_size, self.b_size*6, self.b_size*4))
+            self.b_size*13, self.b_size, self.b_size*6, self.b_size*5.5))
         pygame.display.update()
 
     def draw_game_view(self):

@@ -1,11 +1,11 @@
 import unittest
-from shape import Shape
-from level import Level
+from game_logic.shape import Shape
+from game_logic.level import Level
 
 
 class TestShape(unittest.TestCase):
     def setUp(self):
-        self.test_shape = Shape(2) # T
+        self.test_shape = Shape(2)  # T
         self.test_level = Level()
 
     def test_shape_ctor(self):
@@ -34,7 +34,6 @@ class TestShape(unittest.TestCase):
     def test_move_shape_left(self):
         self.test_shape.move_shape('left', self.test_level)
         self.assertEqual(self.test_shape._col, 3)
-
 
     def test_move_shape_left_cannot_be_moved(self):
         self.test_shape._col = 0

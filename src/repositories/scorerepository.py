@@ -21,7 +21,8 @@ class ScoreRepository:
             score (int): pistemäärä
         """
         cursor = self._connection.cursor()
-        cursor.execute("INSERT INTO Scores (player, score) VALUES (?, ?)", (player, cur_score))
+        cursor.execute(
+            "INSERT INTO Scores (player, score) VALUES (?, ?)", (player, cur_score))
         self._connection.commit()
 
     def get_top_five(self):
@@ -31,7 +32,8 @@ class ScoreRepository:
             [lista]: [description]
         """
         cursor = self._connection.cursor()
-        cursor.execute("SELECT player, score FROM Scores ORDER BY score DESC LIMIT 5")
+        cursor.execute(
+            "SELECT player, score FROM Scores ORDER BY score DESC LIMIT 5")
         rows = cursor.fetchall()
 
         return [(row["player"], row["score"]) for row in rows]

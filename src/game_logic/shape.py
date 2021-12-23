@@ -142,7 +142,6 @@ class Shape:
                 else:
                     self._rotation -= 1
 
-
     def rotate_shape_counter_clockwise(self, level):
         """ Kääntää palikkaa 90 astetta pelikentällä. Jos palikka ei mahdu
         kääntymään palauttaa palikan takaisin alkuperäiseen asentoon.

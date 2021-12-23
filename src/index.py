@@ -1,7 +1,7 @@
 import pygame
-from event_queue import EventQueue
-from gameloop import Gameloop
-from renderer import Renderer
+from gameloop.event_queue import EventQueue
+from gameloop.gameloop import Gameloop
+from gameloop.renderer import Renderer
 
 BLOCK_SIZE = 25
 

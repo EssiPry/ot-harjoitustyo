@@ -10,7 +10,7 @@ class Level():
 
         self._grid = [['.' for x in range(10)] for y in range(20)]
         self._score = 0
-        self._lines_removed = 0
+        self._lines_cleared = 0
 
     def print_grid(self):
         """ Piirtää matriisin terminaalissa. Debuggaukseen.
@@ -38,7 +38,7 @@ class Level():
         Jos on niin kutsuu drop_row -metodia, joka poistaa täyden rivin ja pudottaa
         ylempänä olevia rivejä.
         """
-        rows_deleted = 0
+        lines_deleted = 0
         row_number = 0
         for row in self._grid:
             for i in range(10):
@@ -46,10 +46,11 @@ class Level():
                     break
                 if i == 9:
                     self.delete_and_drop_rows(row_number)
-                    rows_deleted += 1
+                    lines_deleted += 1
             row_number += 1
-        self.increase_score('row', rows_deleted)
-        return rows_deleted
+        self.increase_score('row', lines_deleted)
+        self.increase_lines_cleared(lines_deleted)
+        return lines_deleted
 
     def delete_and_drop_rows(self, row_number):
         """ Poistaa rivin ja lisää uuden tyhjän rivin pelikentän ensimmäiseksi riviksi.
@@ -59,7 +60,6 @@ class Level():
         """
         self._grid.pop(row_number)
         self._grid.insert(0, ['.' for x in range(10)])
-        self._lines_removed += 1
 
     def check_game_over(self):
         """ Tarkistaa onko peli päättynyt.
@@ -72,8 +72,8 @@ class Level():
                 return True
         return False
 
-    def increase_score(self, kind, number_rows):
-        """lisää pistelaskuriin pisteen jokaisesta lukitusta palikasta
+    def increase_score(self, kind, number_of_lines):
+        """ Lisää pistelaskuriin pisteen jokaisesta lukitusta palikasta
         ja 5 pistettä jokaisesta poistetusta rivistä
 
         Args:
@@ -83,7 +83,15 @@ class Level():
         if kind == 'lock':
             self._score += 1
         elif kind == 'row':
-            self._score += 5 * number_rows
+            self._score += 5 * number_of_lines
+
+    def increase_lines_cleared(self, number_of_lines):
+        """ Lisää poistettujen rivien määrää.
+
+        Args:
+            number_of_lines (int): kierroksella poistettujen rivien lkm
+        """
+        self._lines_cleared += number_of_lines
 
     def get_grid(self):
         return self._grid
@@ -91,5 +99,5 @@ class Level():
     def get_score(self):
         return self._score
 
-    def get_lines_removed(self):
-        return self._lines_removed
+    def get_lines_cleared(self):
+        return self._lines_cleared

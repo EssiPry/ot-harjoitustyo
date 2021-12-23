@@ -20,7 +20,7 @@ class Renderer:
 
     def render_game_over(self):
         self._view = GameOverView(self._display, self._block_size)
-        self._view.show_game_over()
+        self._view.draw_game_over()
 
     def render_high_score(self):
         self._view = HighScoreView(self._display, self._block_size)

@@ -24,24 +24,29 @@ class HighScoreView:
         if len(results) >= 5:
 
             for i in range(5):
-                result = font.render(f'{i+1}. {results[i][0]} {results[i][1]}', 1, (255, 255, 255))
-                self._display.blit(result, (self._b_size*4.7, self._b_size*d_y))
+                result = font.render(
+                    f'{i+1}. {results[i][0]} {results[i][1]}', 1, (255, 255, 255))
+                self._display.blit(
+                    result, (self._b_size*4.7, self._b_size*d_y))
                 d_y += 1.5
 
         elif len(results) <= 0:
 
             for i in range(5):
-                result = font.render(f'{i+1}. no scores yet', 1, (255, 255, 255))
-                self._display.blit(result, (self._b_size*4.7, self._b_size*d_y))
+                result = font.render(
+                    f'{i+1}. no scores yet', 1, (255, 255, 255))
+                self._display.blit(
+                    result, (self._b_size*4.7, self._b_size*d_y))
                 d_y += 1.5
 
         else:
 
             for i in range(len(results)):
-                result = font.render(f'{i+1}. {results[i][0]} {results[i][1]}', 1, (255, 255, 255))
-                self._display.blit(result, (self._b_size*4.7, self._b_size*d_y))
+                result = font.render(
+                    f'{i+1}. {results[i][0]} {results[i][1]}', 1, (255, 255, 255))
+                self._display.blit(
+                    result, (self._b_size*4.7, self._b_size*d_y))
                 d_y += 1.5
-
 
         pygame.display.update()
 

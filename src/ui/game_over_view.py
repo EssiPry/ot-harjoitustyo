@@ -1,5 +1,6 @@
 import pygame
 
+
 class GameOverView:
     """Luokka, joka piirtää pelin lopetusnäkymän.
     """

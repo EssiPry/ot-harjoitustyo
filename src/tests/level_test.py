@@ -1,6 +1,6 @@
 import unittest
-from level import Level
-from shape import Shape
+from game_logic.level import Level
+from game_logic.shape import Shape
 
 
 class TestLevel(unittest.TestCase):
