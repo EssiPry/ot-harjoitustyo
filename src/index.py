@@ -1,6 +1,6 @@
 import pygame
+from event_queue import EventQueue
 from gameloop import Gameloop
-from event_handler import EventHandler
 from renderer import Renderer
 
 BLOCK_SIZE = 25
@@ -14,9 +14,10 @@ def main():
     pygame.init()
 
     clock = pygame.time.Clock()
-    event_handler = EventHandler()
+
+    event_queue = EventQueue()
     renderer = Renderer(display, BLOCK_SIZE)
-    gameloop = Gameloop(clock, renderer, event_handler)
+    gameloop = Gameloop(clock, event_queue, renderer)
     gameloop.start_main_menu()
 
 
