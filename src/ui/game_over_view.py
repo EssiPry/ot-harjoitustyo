@@ -14,7 +14,7 @@ class GameOverView:
             self._b_size*2.5, self._b_size*4, self._b_size*7, self._b_size*7))
         pygame.draw.rect(self._display, (255, 0, 0), pygame.Rect(
             self._b_size*2.5, self._b_size*4, self._b_size*7, self._b_size*7), 4)
-        font_big = pygame.font.SysFont('helvetica', 25)
+        font_big = pygame.font.SysFont('helvetica', 22)
         game_over = font_big.render('GAME OVER', 1, (255, 255, 255))
         self._display.blit(
             game_over, (self._b_size*3.5, self._b_size*5))

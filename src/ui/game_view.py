@@ -67,7 +67,8 @@ class GameView:
             score_text, (self.b_size*13.5, self.b_size*1.5))
         self.display.blit(score, (self.b_size*13.5, self.b_size*2.5))
         lines_text = font.render('Lines cleared:', 1, (255, 255, 255))
-        lines = font.render(f'{self.level.get_lines_cleared()}', 1, (255, 255, 255))
+        lines = font.render(
+            f'{self.level.get_lines_cleared()}', 1, (255, 255, 255))
         self.display.blit(
             lines_text, (self.b_size*13.5, self.b_size*4))
         self.display.blit(lines, (self.b_size*13.5, self.b_size*5))
