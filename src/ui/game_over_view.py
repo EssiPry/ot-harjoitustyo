@@ -15,7 +15,7 @@ class GameOverView:
         pygame.draw.rect(self._display, (255, 0, 0), pygame.Rect(
             self._b_size*2, self._b_size*4, self._b_size*8, self._b_size*7), 4)
         self.display_text(30, 'GAME OVER', 3, 5)
-        self.display_text(20,'Press space to' , 4, 7)
+        self.display_text(20, 'Press space to', 4, 7)
         self.display_text(20, 'return to the', 4.2, 8)
         self.display_text(20, 'main menu', 4.3, 9)
         pygame.display.flip()

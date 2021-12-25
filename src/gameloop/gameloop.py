@@ -28,7 +28,7 @@ class Gameloop():
         self._score_repository = default_score_repository
 
     def start_main_menu(self):
-        """ Näyttää päävalikon, siirtyy muihin käyttöliittymän
+        """ Näyttää päävalikon, siirtyy muihin käyttöliittymän osiin käyttäjsyötteellä.
         """
         self._view = 'menu'
         while True:
@@ -41,6 +41,8 @@ class Gameloop():
             self._clock.tick(1)
 
     def start_game_loop(self):
+        """ Aloitaa pelin, pyörittää pelisilmukkaa, liikuttaa palikaa käyttäjäsyötteellä.
+        """
         self._level = Level()
         running = True
         cur_shape = Shape(randint(0, 6))
@@ -62,6 +64,8 @@ class Gameloop():
         self.start_game_over()
 
     def start_high_score(self):
+        """ Näyttää tulosvalikon, siirtyy takaisin päävalikkoon käyttäjäsyötteellä.
+        """
         while True:
             self._renderer.render_high_score()
             if self.event_handler('HighScoreView', 'shape') is False:
@@ -69,6 +73,9 @@ class Gameloop():
             self._clock.tick(1)
 
     def start_game_over(self):
+        """Näyttää pelin lopetuksen, tallentaa tuloksen tietokantaan.
+        Siirtyy takaisin päävalikkoon käyttäjäsyötteellä.
+        """
         self._score_repository.add_score_to_db(self._level.get_score())
         while True:
             self._renderer.render_game_over()
@@ -77,11 +84,11 @@ class Gameloop():
             self._clock.tick(1)
 
     def event_handler(self, view, shape):
-        """ Käsittelee pelaajasyötteen käsittelijä.
+        """ Pelaajasyötteen käsittelijä.
 
         Args:
             view (str): aktiivisen näkymän nimi, joka määrittää
-            kulloinkin käytössä olevia syötevaihtoehtoja.
+            kulloinkin käytössä olevat syötevaihtoehdot.
             shape (obj): aktiivinen palikka, jota voi liikuttaa
 
         Returns:

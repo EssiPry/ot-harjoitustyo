@@ -7,6 +7,7 @@ from ui.start_view import StartView
 class Renderer:
     """Luokka joka hallinnoi pelinäkymien piirtämistä.
     """
+
     def __init__(self, display, block_size):
         """Luokan konstruktori
 

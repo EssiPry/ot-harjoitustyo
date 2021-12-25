@@ -92,8 +92,6 @@ class Shape:
                 return False
         return True
 
-
-
     def move_shape(self, direction, level):
         """ Liikuttaa palikkaa pelikentällä käyttäjäsyötteen mukaiseen suuntaan yhden
         sarakkeen tai rivin kerrallaan. Tarkistaa tuleeko uusissa koordinaateissa törmäyksiä,
