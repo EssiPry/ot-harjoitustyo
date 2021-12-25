@@ -28,10 +28,13 @@ class Gameloop():
         self._score_repository = default_score_repository
 
     def start_main_menu(self):
+        """ Näyttää päävalikon, siirtyy muihin käyttöliittymän
+        """
+        self._view = 'menu'
         while True:
             self._renderer.render_start()
-            event = self.event_handler('StartView', 'shape')
-            if event == 'start':
+            event = self._view = self.event_handler('StartView', 'shape')
+            if event == 'game':
                 self.start_game_loop()
             elif event == 'high_score':
                 self.start_high_score()
@@ -100,7 +103,7 @@ class Gameloop():
             if view == 'StartView':
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
-                        return 'start'
+                        return 'game'
                     if event.key == pygame.K_SPACE:
                         return 'high_score'
 
