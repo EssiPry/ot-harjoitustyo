@@ -92,20 +92,7 @@ class Shape:
                 return False
         return True
 
-    def move_shape_down(self, level):
-        """ Siirtää palikkaa alas pelikentällä yhden rivin kerrallaan joka kierroksella
-        tai käyttäjäsyötteen mukaan. Tarkistaa tuleeko uusissa koordinaateissa törmäyksiä,
-        jos tulee niin palauttaa palikan takaisin alkuperäisiin koordinaatteiihin
-        ja lukitsee palikan.
-        Args:
-            level (obj): pelikenttä
-        """
-        if not self._locked:
-            level.erase_shape_from_grid(self)
-            self._row += 1
-            if not self.shape_can_be_moved(level):
-                self._row -= 1
-                self.lock_shape()
+
 
     def move_shape(self, direction, level):
         """ Liikuttaa palikkaa pelikentällä käyttäjäsyötteen mukaiseen suuntaan yhden
@@ -126,6 +113,12 @@ class Shape:
                 self._col += 1
                 if not self.shape_can_be_moved(level):
                     self._col -= 1
+
+            if direction == 'down':
+                self._row += 1
+                if not self.shape_can_be_moved(level):
+                    self._row -= 1
+                    self.lock_shape()
 
     def rotate_shape(self, level):
         """ Kääntää palikkaa 90 astetta pelikentällä. Jos palikka ei mahdu

@@ -44,8 +44,11 @@ class TestShape(unittest.TestCase):
         self.test_shape.move_shape('right', self.test_level)
         self.assertEqual(self.test_shape._col, 5)
 
-    def test_move_shape_fall(self):
-        self.test_shape.move_shape_down(self.test_level)
+    def test_move_shape_down(self):
+        self.test_shape.move_shape('down', self.test_level)
+        self.assertEqual(self.test_shape._row, 1)
+        self.test_shape.lock_shape()
+        self.test_shape.move_shape('down', self.test_level)
         self.assertEqual(self.test_shape._row, 1)
 
     def test_rotate_shape(self):
@@ -59,13 +62,6 @@ class TestShape(unittest.TestCase):
         self.test_shape._name = 'O'
         self.test_shape.rotate_shape(self.test_level)
         self.assertEqual(self.test_shape._rotation, 0)
-
-    def test_rotate_shape_counter_clockwise(self):
-        self.assertEqual(self.test_shape._rotation, 0)
-        self.test_shape.rotate_shape_counter_clockwise(self.test_level)
-        self.assertEqual(self.test_shape._rotation, 3)
-        self.test_shape.rotate_shape_counter_clockwise(self.test_level)
-        self.assertEqual(self.test_shape._rotation, 2)
 
     def test_lock_shape(self):
         self.test_shape.lock_shape()
