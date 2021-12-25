@@ -11,18 +11,18 @@ class GameOverView:
 
     def draw_game_over(self):
         pygame.draw.rect(self._display, (0, 0, 0), pygame.Rect(
-            self._b_size*2.5, self._b_size*4, self._b_size*7, self._b_size*7))
+            self._b_size*2, self._b_size*4, self._b_size*8, self._b_size*7))
         pygame.draw.rect(self._display, (255, 0, 0), pygame.Rect(
-            self._b_size*2.5, self._b_size*4, self._b_size*7, self._b_size*7), 4)
-        font_big = pygame.font.SysFont('helvetica', 22)
-        game_over = font_big.render('GAME OVER', 1, (255, 255, 255))
+            self._b_size*2, self._b_size*4, self._b_size*8, self._b_size*7), 4)
+        self.display_text(30, 'GAME OVER', 3, 5)
+        self.display_text(20,'Press space to' , 4, 7)
+        self.display_text(20, 'return to the', 4.2, 8)
+        self.display_text(20, 'main menu', 4.3, 9)
+        pygame.display.flip()
+
+    def display_text(self, font_size, text, d_x, d_y):
+        font = pygame.font.SysFont('helvetica', font_size)
+        to_be_displayed = font.render(text, 1, (255, 255, 255))
         self._display.blit(
-            game_over, (self._b_size*3.5, self._b_size*5))
-        font_small = pygame.font.SysFont('helvetica', 18)
-        press_space = font_small.render('Press space to', 1, (255, 255, 255))
-        self._display.blit(press_space, (self._b_size*3.8, self._b_size*7))
-        return_to = font_small.render('return to the', 1, (255, 255, 255))
-        self._display.blit(return_to, (self._b_size*4.05, self._b_size*8))
-        main_menu = font_small.render('main menu', 1, (255, 255, 255))
-        self._display.blit(main_menu, (self._b_size*4.3, self._b_size*9))
+            to_be_displayed, (self._b_size*d_x, self._b_size*d_y))
         pygame.display.update()

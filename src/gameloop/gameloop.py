@@ -14,6 +14,13 @@ class Gameloop():
     """
 
     def __init__(self, clock, event_queue, renderer):
+        """Luokan konstruktori
+
+        Args:
+            clock (obj): [description]
+            event_queue (obj): [description]
+            renderer (obj): [description]
+        """
         self._clock = clock
         self._event_queue = event_queue
         self._level = None
@@ -39,14 +46,12 @@ class Gameloop():
 
         while running:
             if self._level.check_game_over():
-                self._score_repository.add_score_to_db(
-                    'Minä', self._level.get_score())
                 running = False
             if cur_shape.is_locked():
                 cur_shape = Shape(randint(0, 6))
                 self._level.increase_score('lock', 1)
             self.event_handler('GameView', cur_shape)
-            cur_shape.move_shape_down(self._level)
+            cur_shape.move_shape('down', self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)
             self._renderer.render_game(self._level)
@@ -54,22 +59,34 @@ class Gameloop():
         self.start_game_over()
 
     def start_high_score(self):
-        running = True
-        while running:
+        while True:
             self._renderer.render_high_score()
             if self.event_handler('HighScoreView', 'shape') is False:
                 break
             self._clock.tick(1)
 
     def start_game_over(self):
-        running = True
-        while running:
+        self._score_repository.add_score_to_db(self._level.get_score())
+        while True:
             self._renderer.render_game_over()
-            if self.event_handler('GameOverView', 'shape') is False:
+            if self.event_handler('HighScoreView', 'shape') is False:
                 break
             self._clock.tick(1)
 
     def event_handler(self, view, shape):
+        """ Käsittelee pelaajasyötteen käsittelijä.
+
+        Args:
+            view (str): aktiivisen näkymän nimi, joka määrittää
+            kulloinkin käytössä olevia syötevaihtoehtoja.
+            shape (obj): aktiivinen palikka, jota voi liikuttaa
+
+        Returns:
+            [bool]: tulos- ja pelin loppunäkymässa palauttaa False,
+            kun käyttäjä painaa välilyöntiä, jolloin peli palautuu
+            päävalikkoon.
+
+        """
 
         for event in self._event_queue.get():
             if event.type == pygame.QUIT:
@@ -101,4 +118,4 @@ class Gameloop():
                     elif event.key == pygame.K_UP:
                         shape.rotate_shape(self._level)
                     elif event.key == pygame.K_DOWN:
-                        shape.move_shape_down(self._level)
+                        shape.move_shape('down', self._level)
