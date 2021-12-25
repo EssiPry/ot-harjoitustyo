@@ -66,3 +66,11 @@ class TestLevel(unittest.TestCase):
         self.assertEqual(self.test_level.get_score(), 0)
         self.test_level.increase_score('row', 5)
         self.assertEqual(self.test_level.get_score(), 25)
+
+    def test_increase_lines_cleared(self):
+        self.assertEqual(self.test_level._lines_cleared, 0)
+        self.test_level.increase_lines_cleared(3)
+        self.assertEqual(self.test_level._lines_cleared, 3)
+
+    def test_get_lines_cleared(self):
+        self.assertEqual(self.test_level.get_lines_cleared(), 0)

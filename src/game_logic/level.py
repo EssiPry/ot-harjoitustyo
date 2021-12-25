@@ -12,13 +12,6 @@ class Level():
         self._score = 0
         self._lines_cleared = 0
 
-    def print_grid(self):
-        """ Piirtää matriisin terminaalissa. Debuggaukseen.
-        """
-        for row in self._grid:
-            print(row)
-        print()
-
     def add_shape_to_grid(self, shape):
         """ Lisää palikan koordinaattien paikalle palikan nimen matriisissa.
         """

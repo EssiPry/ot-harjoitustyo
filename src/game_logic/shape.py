@@ -98,11 +98,12 @@ class Shape:
         Args:
             level (obj): pelikenttä
         """
-        level.erase_shape_from_grid(self)
-        self._row += 1
-        if not self.shape_can_be_moved(level):
-            self._row -= 1
-            self.lock_shape()
+        if not self._locked:
+            level.erase_shape_from_grid(self)
+            self._row += 1
+            if not self.shape_can_be_moved(level):
+                self._row -= 1
+                self.lock_shape()
 
     def move_shape(self, direction, level):
         """ Liikuttaa palikkaa pelikentällä käyttäjäsyötteen mukaiseen suuntaan yhden

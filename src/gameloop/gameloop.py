@@ -99,4 +99,4 @@ class Gameloop():
                     elif event.key == pygame.K_UP:
                         shape.rotate_shape(self._level)
                     elif event.key == pygame.K_DOWN:
-                        shape.rotate_shape_counter_clockwise(self._level)
+                        shape.shape_fall(self._level)
