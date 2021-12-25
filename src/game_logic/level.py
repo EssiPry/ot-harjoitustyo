@@ -1,6 +1,6 @@
 class Level():
     """Luokka, joka avulla ylläpidetään palikoiden sijaintia pelikentällä ja
-    joka laskee käynnissä olevan pelin pisteet.
+    joka laskee käynnissä olevan pelin pisteet ja poistettujen rivien määrän.
     """
 
     def __init__(self):
@@ -13,14 +13,14 @@ class Level():
         self._lines_cleared = 0
 
     def add_shape_to_grid(self, shape):
-        """ Lisää palikan koordinaattien paikalle palikan nimen matriisissa.
+        """ Lisää palikan matriisiin.
         """
         shape_coordinates = shape.get_current_coordinates()
         for pair in shape_coordinates:
             self._grid[pair[0]][pair[1]] = shape.get_name()
 
     def erase_shape_from_grid(self, shape):
-        """ Poistaa palikan nimen palikan koordinaateista matriisista.
+        """ Poistaa palikan matriisista ja koordinaatit korvaa tyhjällä.
         """
         shape_coordinates = shape.get_current_coordinates()
         for pair in shape_coordinates:
@@ -30,7 +30,11 @@ class Level():
         """ Käy matriisin läpi ja tarkistaa onko pelikentällä täysiä vaakarivejä palikoita.
         Jos on niin kutsuu drop_row -metodia, joka poistaa täyden rivin ja pudottaa
         ylempänä olevia rivejä.
+
+        Returns:
+            [int]: täysien rivien lukumäärä
         """
+
         lines_deleted = 0
         row_number = 0
         for row in self._grid:
@@ -46,7 +50,7 @@ class Level():
         return lines_deleted
 
     def delete_and_drop_rows(self, row_number):
-        """ Poistaa rivin ja lisää uuden tyhjän rivin pelikentän ensimmäiseksi riviksi.
+        """ Poistaa täyden rivin ja lisää uuden tyhjän rivin pelikentän ensimmäiseksi riviksi.
 
         Args:
             row_number (int): poistettavan rivin rivinumero
@@ -55,7 +59,7 @@ class Level():
         self._grid.insert(0, ['.' for x in range(10)])
 
     def check_game_over(self):
-        """ Tarkistaa onko peli päättynyt.
+        """ Tarkistaa onko peli päättynyt eli onko ensimmäisellä rivillä lukittuja palikoita.
 
         Returns:
             True, jos ylärivillä on lukittuja palikoita, muussa tapauksessa False.
@@ -70,8 +74,8 @@ class Level():
         ja 5 pistettä jokaisesta poistetusta rivistä
 
         Args:
-            type (str): lukitseminen vai rivipisteet
-            rows (int): kierroksella poistettujen rivin lkm
+            kind (str): kertoo pistetyypin lukittu vai rivi
+            number_of_lines (int): kierroksella poistettujen rivin lukumäärä
         """
         if kind == 'lock':
             self._score += 1
@@ -79,10 +83,10 @@ class Level():
             self._score += 5 * number_of_lines
 
     def increase_lines_cleared(self, number_of_lines):
-        """ Lisää poistettujen rivien määrää.
+        """ Kasvattaa poistettujen rivien määrää.
 
         Args:
-            number_of_lines (int): kierroksella poistettujen rivien lkm
+            number_of_lines (int): kierroksella poistettujen rivien lukumäärä
         """
         self._lines_cleared += number_of_lines
 

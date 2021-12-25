@@ -45,7 +45,7 @@ class TestShape(unittest.TestCase):
         self.assertEqual(self.test_shape._col, 5)
 
     def test_move_shape_fall(self):
-        self.test_shape.shape_fall(self.test_level)
+        self.test_shape.move_shape_down(self.test_level)
         self.assertEqual(self.test_shape._row, 1)
 
     def test_rotate_shape(self):

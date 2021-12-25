@@ -46,7 +46,7 @@ class Gameloop():
                 cur_shape = Shape(randint(0, 6))
                 self._level.increase_score('lock', 1)
             self.event_handler('GameView', cur_shape)
-            cur_shape.shape_fall(self._level)
+            cur_shape.move_shape_down(self._level)
             self._level.check_for_full_rows()
             self._level.add_shape_to_grid(cur_shape)
             self._renderer.render_game(self._level)
@@ -75,15 +75,17 @@ class Gameloop():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+
             if view == 'StartView':
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_RETURN:
                         return 'start'
                     if event.key == pygame.K_SPACE:
                         return 'high_score'
-                    if event.key == pygame.K_ESCAPE:
-                        pygame.quit()
-                        sys.exit()
 
             if view in ['HighScoreView', 'GameOverView']:
                 if event.type == pygame.KEYDOWN:
@@ -99,4 +101,4 @@ class Gameloop():
                     elif event.key == pygame.K_UP:
                         shape.rotate_shape(self._level)
                     elif event.key == pygame.K_DOWN:
-                        shape.shape_fall(self._level)
+                        shape.move_shape_down(self._level)

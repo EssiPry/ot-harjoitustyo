@@ -15,7 +15,7 @@ class ScoreRepository:
         self._connection = connection
 
     def add_score_to_db(self, player, cur_score):
-        """ Lisää pistemäärän tietokantaan.
+        """ Lisää pelaajan nimen ja pistemäärän tietokantaan Scores-tauluun.
 
         Args:
             score (int): pistemäärä
@@ -26,7 +26,7 @@ class ScoreRepository:
         self._connection.commit()
 
     def get_top_five(self):
-        """ Palauttaa viisi korkeinta pistemäärää.
+        """ Palauttaa viiden parhaan tuloksen nimet ja pistemäärät Scores-taulusta.
 
         Returns:
             [lista]: [description]
@@ -39,7 +39,7 @@ class ScoreRepository:
         return [(row["player"], row["score"]) for row in rows]
 
     def delete_all(self):
-        """ Poistaa kaikki pisteet tietokannasta.
+        """ Tyhjentää tietokannan Scores-taulun.
         """
 
         cursor = self._connection.cursor()

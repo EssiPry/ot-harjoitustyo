@@ -5,7 +5,7 @@ from repositories.scorerepository import (
 
 
 class HighScoreView:
-    """Luokka, joka piirtää parhaat tulokset näkymän.
+    """Luokka, joka piirtää tulosnäkymän.
     """
 
     def __init__(self, display, block_size):

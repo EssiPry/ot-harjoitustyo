@@ -43,10 +43,11 @@ class Shape:
 
     def __init__(self, list_index):
         """ Luokan konstruktori, luo uuden palikan, asettaa palikan
-        pelikentän keskellä koordinaatteihin [0][4]
+        pelikentän keskellä koordinaatteihin [0][4] ja ensimmäiseen kiertoasentoon.
+        Uusi palikka ei ole lukittu.
 
         Args:
-            list_index (int): indeksi, jolla valitaan satunnainen palikka listalta.
+            list_index (int): luku, jolla valitaan satunnainen palikka listalta.
         """
         self._name = shape_names[list_index]
         self._row = 0
@@ -60,7 +61,7 @@ class Shape:
         pelikentällä listana.
 
         Returns:
-            [list]: palikan koordinaatit
+            [list]: palikan koordinaatit listana
         """
         current_coordinates = []
         for coordinates in shapes[self._list_index][self._rotation]:
@@ -71,7 +72,7 @@ class Shape:
 
     def shape_can_be_moved(self, level):
         """ Tarkistaa voiko palikka liikkua haluttuun suuntaan pelikentällä vai
-        meneekö palikka ruudukon yli tai törmääkö se lukittuun palikkaan.
+        meneekö palikka pelikentän ruudukon yli tai törmääkö se toiseen palikkaan.
 
         Args:
             level (obj): pelikenttä
@@ -91,10 +92,11 @@ class Shape:
                 return False
         return True
 
-    def shape_fall(self, level):
-        """ Siirtää palikkaa alas pelikentällä yhden rivin kerrallaan
-        kunnes palikka törmää joko pelikentän pohjaan tai toiseen palikkaan.
-
+    def move_shape_down(self, level):
+        """ Siirtää palikkaa alas pelikentällä yhden rivin kerrallaan joka kierroksella
+        tai käyttäjäsyötteen mukaan. Tarkistaa tuleeko uusissa koordinaateissa törmäyksiä,
+        jos tulee niin palauttaa palikan takaisin alkuperäisiin koordinaatteiihin
+        ja lukitsee palikan.
         Args:
             level (obj): pelikenttä
         """
@@ -142,24 +144,6 @@ class Shape:
                     self._rotation = 3
                 else:
                     self._rotation -= 1
-
-    def rotate_shape_counter_clockwise(self, level):
-        """ Kääntää palikkaa 90 astetta pelikentällä. Jos palikka ei mahdu
-        kääntymään palauttaa palikan takaisin alkuperäiseen asentoon.
-
-        Args:
-            level (obj): pelikenttä
-        """
-        level.erase_shape_from_grid(self)
-        if self._name in ['I', 'i', 'T', 't', 'L', 'l', 'J', 'j', 'S', 's', 'Z', 'z']:
-            self._rotation -= 1
-            if self._rotation == -1:
-                self._rotation = 3
-            if not self.shape_can_be_moved(level):
-                if self._rotation == 3:
-                    self._rotation = 0
-                else:
-                    self._rotation += 1
 
     def lock_shape(self):
         """ Lukitsee palikan ja muuttaa palikan nimen pieneksi alkukirjaimeksi.
