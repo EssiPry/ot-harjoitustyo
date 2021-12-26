@@ -49,9 +49,9 @@ Voit liikuttaa ja kääntää palikkaa seuraavasti:
 | vasen-nuoli | siirrä palikkaa vasemmalle |
 | oikea-nuoli | siirrä palikkaa oikealle |
 | ylös-nuoli | kierrä palikkaa myötäpäivään |
-| alas-nuoli | siirtää palikkaa alas |
+| alas-nuoli | siirrä palikkaa alas |
 
-Pelinäkymän oikeassa laidassa näkyy pistetilanne ja poistettujen rivien määrä.
+Pelinäkymän oikeassa laidassa näet pistetilanteen ja poistettujen rivien määrän.
 
 ### Pelin päättyminen
 
