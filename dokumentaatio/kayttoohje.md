@@ -1,6 +1,6 @@
 ## Käyttöohje
 
-Lataa projektin viimeisin release. lisää linkki.
+Lataa projektin viimeisin [release](https://github.com/EssiPry/ot-harjoitustyo/releases/tag/loppupalautus).
 
 
 ### Pelin asennus

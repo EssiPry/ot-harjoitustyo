@@ -5,13 +5,14 @@ Sovellus on tetris-klooni eli hauska tietokonepeli, jossa pelaaja yrittää pudo
 
 ### Release
 
-* [Uusin release](https://github.com/EssiPry/ot-harjoitustyo/releases/tag/viikko6)
+* [Loppupalautus](https://github.com/EssiPry/ot-harjoitustyo/releases/tag/loppupalautus)
 
 ### Dokumentaatio
 
 * [Käyttöohje](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/kayttoohje.md)
-* [Arkkitehtuurikuvaus](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
 * [Vaatimusmäärittely](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/vaatimusmaarittely.md)
+* [Arkkitehtuurikuvaus](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/arkkitehtuuri.md)
+* [Testaus](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/testaus.md)
 * [Työaikakirjanpito](https://github.com/EssiPry/ot-harjoitustyo/blob/main/dokumentaatio/tyoaikakirjanpito.md)
 
 
