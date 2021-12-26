@@ -31,7 +31,7 @@ poetry run invoke start
 
 Peli aukeaa päävalikkoon:
 
-![Pelin päävalikko](.kuvat/paavalikko.png)
+![Pelin päävalikko](./kuvat/paavalikko.png)
 
 Aloita uusi peli painalla enter tai katso pelistä saatuja parhaita tuloksia painamalla välilyöntiä. Pääset tulostaulukosta takaisin päävalikkoon painamalla välilyöntiä.
 
@@ -40,7 +40,7 @@ Aloita uusi peli painalla enter tai katso pelistä saatuja parhaita tuloksia pai
 
 Uusi peli käynnistyy automaattisesti. Liikutettava palikka generoituu/ilmestyy ruudun keskiosaan ja putoaa alas kunnes törmää pelialustan pohjaan tai toiseen palikkaan.
 
-![Pelin aikainen näkymä](.kuvat/pelinakyma.png)
+![Pelin aikainen näkymä](./kuvat/pelinakyma.png)
 
 Voit liikuttaa ja kääntää palikkaa seuraavasti:
 

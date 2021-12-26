@@ -4,7 +4,7 @@
 
 Sovellus koostuu neljästä kerroksesta: käyttöliittymä, sovelluslogiikka, pelisilmukka ja tiedon pysyväistallennus. Koodin pakkausrakenne on seuraava:
 
-![Pakkauskaavio](.kuvat/pakkauskaavio.png)
+![Pakkauskaavio](./kuvat/pakkauskaavio.png)
 
 Pakkaus ui sisältää käyttöliittymästä, gameloop pelisilmukasta, game logic sovelluslogiikasta ja repositories tietojen pysyväistallennuksesta vastaavan koodin.
 
