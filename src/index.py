@@ -9,7 +9,7 @@ BLOCK_SIZE = 30
 
 def main():
     display = pygame.display.set_mode((BLOCK_SIZE*20, BLOCK_SIZE*22))
-    pygame.display.set_caption("Tetris-ish")
+    pygame.display.set_caption("Tetris")
     pygame.display.update()
 
     pygame.init()
