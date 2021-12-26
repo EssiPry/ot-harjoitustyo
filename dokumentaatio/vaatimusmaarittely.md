@@ -2,7 +2,7 @@
 
 #### Sovelluksen tarkoitus
 
-Sovellus on Tetris -klooni eli eri hauska tietokonepeli, jossa pelaaja yrittää pudottaa eri muotoisia palikoita niin, että ne täyttävät pelialueen vaakasuunnassa ja katoavat. Peli päättyy, kun palikka koskee pelialueen yläosaan.
+Sovellus on Tetris -klooni eli eri hauska tietokonepeli, jossa pelaaja yrittää pudottaa eri muotoisia palikoita niin, että ne täyttävät pelialueen rivin. Palikat katoavat, kun rivi on täysi ja rivin yläpuolella olevat palikat putoavat alemmas. Peli päättyy, kun palikka ei enää mahdu liikkumaan pelialueella ja lukkiutuu heti ilmestyessään.
 
 #### Käyttäjät
 
@@ -17,7 +17,8 @@ Sovelluksessa on vain yksi käyttäjärooli - pelaaja.
 - [x] Pelissä on 7 muotoista palikkaa
 - [x] Pelissä on ylhäältä alas putoava palikka
 - [x] Pelaaja voi siirtää putoavaa palikkaa oikealle ja vasemmalle
-- [x] Pelaaja voi kääntää putoavaa palikkaa myötä- ja vastapäivään
+- [x] Pelaaja voi kääntää putoavaa palikkaa
+- [x] Pelaaja voi nopeuttaa palikan putoamista
 - [x] Palikka ei mene pelialueen reunojen yli
 - [x] Putoava palikka pysähtyy kun se törmää pelialueen pohjaan tai toiseen palikkaan
 - [x] Seuraava palikka ilmaantuu, kun edellinen on pysähtynyt
@@ -32,7 +33,7 @@ Sovelluksessa on vain yksi käyttäjärooli - pelaaja.
 #### Jatkokehitysideoita
 
 - [ ] Peli näyttää seuraavan putoavan palikan
-- [ ] Pelaaja voi nopeuttaa palikan putoamista
 - [ ] Pelaaja voi tallentaa nimimerkin pisteiden kanssa
 - [ ] Pelissä on tasoja esim. peli nopeutuu kun saadaan tietty määrä rivejä poistettua
 - [ ] Pelaaja voi valita vaikeustason esim. palikat putoavat nopeammin tai pelialue on osittain täytetty heti pelin alkaessa
+- [ ] Ääniefektien lisääminen
