@@ -4,7 +4,7 @@
 
 Sovellus koostuu neljästä kerroksesta: käyttöliittymä, sovelluslogiikka, pelisilmukka ja tiedon pysyväistallennus. Koodin pakkausrakenne on seuraava:
 
-![pakkauskaavio](.kuvat/pakkauskaavio.png)
+![Pakkauskaavio](.kuvat/pakkauskaavio.png)
 
 Pakkaus ui sisältää käyttöliittymästä, gameloop pelisilmukasta, game logic sovelluslogiikasta ja repositories tietojen pysyväistallennuksesta vastaavan koodin.
 
@@ -43,11 +43,8 @@ Tulokset tallennetaan SQLITE-tietokannan tauluun Score, joka alustetaan initiali
 
 Kuvataan pelin toimintalogiikan muutaman toiminnallisuuden osalta sekvenssikaavioina.
 
-#### Pelisilmukka
-
 ![Pelisilmukan sekvenssikaavio](./kuvat/pelisilmukka.png)
 
-#### Palikan liikuttaminen oikealle tai vasemmalle
 
 ![Palikan liikuttaminen sekvenssikaavio](./kuvat/palikan_liike.png)
 
