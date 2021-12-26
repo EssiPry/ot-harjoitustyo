@@ -1,3 +1,4 @@
+from sqlite3.dbapi2 import OperationalError
 import sys
 from random import randint
 import pygame
@@ -30,15 +31,15 @@ class Gameloop():
     def start_main_menu(self):
         """ Näyttää päävalikon, siirtyy muihin käyttöliittymän osiin käyttäjsyötteellä.
         """
-        self._view = 'menu'
+        self._renderer.render_start()
         while True:
-            self._renderer.render_start()
-            event = self._view = self.event_handler('StartView', 'shape')
+
+            event = self.event_handler('StartView', 'shape')
             if event == 'game':
                 self.start_game_loop()
             elif event == 'high_score':
                 self.start_high_score()
-            self._clock.tick(1)
+            self._clock.tick(10)
 
     def start_game_loop(self):
         """ Aloitaa pelin, pyörittää pelisilmukkaa, liikuttaa palikaa käyttäjäsyötteellä.
@@ -66,22 +67,28 @@ class Gameloop():
     def start_high_score(self):
         """ Näyttää tulosvalikon, siirtyy takaisin päävalikkoon käyttäjäsyötteellä.
         """
+        self._renderer.render_high_score()
         while True:
-            self._renderer.render_high_score()
             if self.event_handler('HighScoreView', 'shape') is False:
                 break
-            self._clock.tick(1)
+            self._clock.tick(10)
+        self.start_main_menu()
 
     def start_game_over(self):
         """Näyttää pelin lopetuksen, tallentaa tuloksen tietokantaan.
         Siirtyy takaisin päävalikkoon käyttäjäsyötteellä.
         """
-        self._score_repository.add_score_to_db(self._level.get_score())
+        try:
+            self._score_repository.add_score_to_db(self._level.get_score())
+        except OperationalError:
+            print(
+                'Please run "poetry run invoke build" on the command line before starting the game')
+        self._renderer.render_game_over()
         while True:
-            self._renderer.render_game_over()
-            if self.event_handler('HighScoreView', 'shape') is False:
+            if self.event_handler('GameOverView', 'shape') is False:
                 break
-            self._clock.tick(1)
+            self._clock.tick(10)
+        self.start_main_menu()
 
     def event_handler(self, view, shape):
         """ Pelaajasyötteen käsittelijä.

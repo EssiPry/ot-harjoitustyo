@@ -31,6 +31,7 @@ class ScoreRepository:
         Returns:
             [lista]: [description]
         """
+
         cursor = self._connection.cursor()
         cursor.execute(
             "SELECT score FROM Scores ORDER BY score DESC LIMIT 5")
